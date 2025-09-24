@@ -1,0 +1,215 @@
+{
+  "meta": {
+    "title": "Your Name | Your Role",
+    "description": "Short summary of your skills and experience."
+  },
+  "personal": {
+    "name": "Your Name",
+    "title": "Your Title",
+    "about": "Short professional bio goes here. Summarize your experience, focus areas, and what you’re looking for in 1-2 sentences.",
+    "profileImage": "/placeholder-user.jpg",
+    "location": "City, Country",
+    "email": "your.email@example.com",
+    "phone": "+1 (555) 000-0000",
+    "workingHours": "Available across time zones",
+    "availableForWork": true,
+    "badges": ["React", "React Native", "TypeScript"],
+    "social": [
+      {
+        "platform": "GitHub",
+        "url": "https://github.com/",
+        "icon": "Github"
+      },
+      {
+        "platform": "LinkedIn",
+        "url": "https://www.linkedin.com/home",
+        "icon": "Linkedin"
+      },
+      {
+        "platform": "X",
+        "url": "https://x.com/?lang=en",
+        "icon": "Twitter"
+      }
+    ]
+  },
+  "languages": [
+    {
+      "name": "English",
+      "proficiency": "Fluent"
+    }
+  ],
+  "navigation": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Experience",
+      "href": "#experience"
+    },
+    {
+      "label": "Education",
+      "href": "#education"
+    },
+    {
+      "label": "Skills",
+      "href": "#skills"
+    },
+    {
+      "label": "Projects",
+      "href": "#projects"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Job Title",
+      "company": "Company Name",
+      "companyUrl": "https://acme.ai/",
+      "period": "Start – End",
+      "description": "Brief description of your role and impact.",
+      "achievements": [
+        "Led frontend development using modern frameworks (e.g., Next.js, TypeScript).",
+        "Collaborated across teams to deliver features on schedule.",
+        "Improved performance, accessibility, and UX across core journeys.",
+        "Integrated third‑party APIs and platform services as needed.",
+        "Contributed to CI/CD, testing, and release workflows.",
+        "Documented patterns and mentored teammates."
+      ]
+    },
+    {
+      "title": "Job Title",
+      "company": "Company Name",
+      "companyUrl": "https://acme.ai/",
+      "period": "Start – End",
+      "description": "Brief description of the product and your responsibilities.",
+      "achievements": [
+        "Shipped responsive UI with a modern design system.",
+        "Collaborated with product/design to iterate rapidly.",
+        "Integrated AI features and external APIs where appropriate.",
+        "Built cross‑platform experiences (web/mobile) as required.",
+        "Improved reliability through testing and monitoring.",
+        "Championed developer experience and documentation."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Degree or Certification",
+      "institution": "Institution Name",
+      "year": "Year or Range"
+    }
+  ],
+  "technicalSkills": {
+    "languagesFrameworks": [
+      "React (Next.js)",
+      "TypeScript/JavaScript", 
+      "React Native (Expo)",
+      "Electronjs",
+      "HTML5",
+      "CSS3"
+    ],
+    "styling": [
+      "Tailwind CSS",
+      "Shadcn UI", 
+      "Material UI",
+      "Magic UI",
+      "NativeWind",
+      "React Native Elements"
+    ],
+    "tools": [
+      "Git/GitHub",
+      "Git Actions for CI/CD",
+      "Docker",
+      "Deployments (Vercel, Digital Ocean)"
+    ],
+    "ai": [
+      "OpenAI",
+      "Google AI Studio",
+      "Vercel AI SDK",
+      "Retell AI (Voice agents)"
+    ],
+    "productivity": [
+      "Figma",
+      "Framer",
+      "Cursor",
+      "Codex",
+      "Lovable",
+      "v0",
+      "Balsamiq",
+      "Excalidraw",
+      "Loom",
+      "Miro"
+    ]
+  },
+  "projects": [
+    {
+      "id": 1,
+      "slug": "ai-invoice-assistant",
+      "title": "AI Invoice Assistant",
+      "category": "Web Application",
+      "shortDescription": "AI-powered web app with natural language invoice management capabilities.",
+      "description": [
+        "Some description for the project"
+      ],
+      "features": [
+        "Natural language invoice management through AI chat interface",
+        "Full CRUD operations with API integration"
+      ],
+      "technologies": ["React", "Next.js", "TypeScript", "Vercel AI SDK", "OpenAI API", "API", "Tailwind CSS"],
+      "coverImage": "/job-finder-cover.png",
+      "gallery": [
+        { "url": "/job-finder-screen1.png" },
+        { "url": "/job-finder-screen2.png" }
+      ],
+      "timeline": "Personal Project (2024)",
+      "role": "Full-Stack Developer",
+      "githubUrl": "https://github.com/"
+    },
+    {
+      "id": 2,
+      "slug": "ai-recalibration-app",
+      "title": "The Recalibration App",
+      "category": "Mobile App",
+      "shortDescription": "React Native mobile app with AI-powered emotional analysis and personalized mental wellness tracking.",
+      "description": [
+        "Some description for the project"
+      ],
+      "features": [
+        "AI-powered emotional analysis of daily entries",
+        "Daily concern logging with intelligent categorization"
+      ],
+      "technologies": ["React Native", "Expo", "TypeScript", "AI/ML APIs", "SQLite", "React Native Elements", "NativeWind"],
+      "coverImage": "/finance-dashboard-cover.png",
+      "gallery": [
+
+        { "url": "/finance-dashboard-screen3.png" }
+      ],
+      "timeline": "Personal Project (2024)",
+      "role": "Mobile Developer & UX Designer",
+      "githubUrl": "https://github.com/"
+    },
+    {
+      "id": 3,
+      "slug": "solutions-projects",
+      "title": "Solutions Projects",
+      "category": "Professional Work",
+      "shortDescription": "Web applications built with modern tech stack.",
+      "description": [
+        "Some description for the company"
+      ],
+      "features": [
+          "AI-powered emotional analysis of daily entries",
+        "Daily concern logging with intelligent categorization"
+      ],
+      "technologies": ["React Native", "Expo", "TypeScript", "AI/ML APIs", "SQLite", "React Native Elements", "NativeWind"],
+      "coverImage": "/finance-dashboard-cover.png",
+      "gallery": [
+
+        { "url": "/finance-dashboard-screen3.png" }
+      ],
+      "timeline": "Personal Project (2024)",
+      "role": "Mobile Developer & UX Designer",
+      "githubUrl": "https://github.com/"
+    }
+  ]
+}
