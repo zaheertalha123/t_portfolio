@@ -5,18 +5,21 @@ import { AnimatedSection } from "@/components/layout/animated-section";
 import { ProfileSection } from "@/components/sections/ProfileSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
+import { AchievementsSection } from "@/components/sections/AchievementsSection";
 import { EducationSection } from "@/components/sections/EducationSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import type { Project } from "@/lib/data";
 import {
   getAllProjects,
   getExperienceInfo,
+  getAchievementsInfo,
   getTechnicalSkillsInfo,
 } from "@/lib/data";
 
 export default function Home() {
   const projects: Project[] = getAllProjects();
   const experienceInfo = getExperienceInfo();
+  const achievementsInfo = getAchievementsInfo();
   const technicalSkills = getTechnicalSkillsInfo();
 
   return (
@@ -40,6 +43,7 @@ export default function Home() {
 
           <SkillsSection technicalSkills={technicalSkills} />
           <ExperienceSection experience={experienceInfo} />
+          <AchievementsSection achievements={achievementsInfo} />
           <EducationSection />
           <ProjectsSection projects={projects} />
         </div>

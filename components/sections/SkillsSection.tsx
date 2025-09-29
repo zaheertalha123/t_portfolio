@@ -10,6 +10,7 @@ import {
 
 type TechnicalSkills = {
   languagesFrameworks: string[];
+  cloudSecurity: string[];
   styling: string[];
   tools: string[];
   ai: string[];
@@ -43,6 +44,22 @@ export function SkillsSection({
                 <CollapsibleContent className="pt-2">
                   <div className="flex flex-wrap gap-2">
                     {technicalSkills.languagesFrameworks.map((skill, index) => (
+                      <Tag key={index}>{skill}</Tag>
+                    ))}
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+
+              <Collapsible>
+                <CollapsibleTrigger className="w-full flex items-center justify-between rounded-xl bg-zinc-800/30 px-3 py-2">
+                  <h4 className="text-sm font-medium text-cyan-400">
+                    Cloud Security
+                  </h4>
+                  <ChevronDown className="h-4 w-4 text-cyan-400" />
+                </CollapsibleTrigger>
+                <CollapsibleContent className="pt-2">
+                  <div className="flex flex-wrap gap-2">
+                    {technicalSkills.cloudSecurity.map((skill, index) => (
                       <Tag key={index}>{skill}</Tag>
                     ))}
                   </div>
@@ -132,6 +149,19 @@ export function SkillsSection({
               <AnimatedSection animation="slide-left" delay={200}>
                 <div className="space-y-3">
                   <h4 className="text-sm font-medium text-cyan-400">
+                    Cloud Security
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {technicalSkills.cloudSecurity.map((skill, index) => (
+                      <Tag key={index}>{skill}</Tag>
+                    ))}
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection animation="slide-right" delay={300}>
+                <div className="space-y-3">
+                  <h4 className="text-sm font-medium text-cyan-400">
                     Web & Mobile Styling
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -142,7 +172,7 @@ export function SkillsSection({
                 </div>
               </AnimatedSection>
 
-              <AnimatedSection animation="slide-right" delay={300}>
+              <AnimatedSection animation="slide-left" delay={400}>
                 <div className="space-y-3">
                   <h4 className="text-sm font-medium text-cyan-400">
                     Version Control & Deployment
@@ -155,7 +185,7 @@ export function SkillsSection({
                 </div>
               </AnimatedSection>
 
-              <AnimatedSection animation="slide-left" delay={400}>
+              <AnimatedSection animation="slide-right" delay={500}>
                 <div className="space-y-3">
                   <h4 className="text-sm font-medium text-cyan-400">
                     Artificial Intelligence
@@ -168,7 +198,7 @@ export function SkillsSection({
                 </div>
               </AnimatedSection>
 
-              <AnimatedSection animation="slide-right" delay={500}>
+              <AnimatedSection animation="slide-left" delay={600}>
                 <div className="space-y-3">
                   <h4 className="text-sm font-medium text-cyan-400">
                     Favorite Productivity Tools

@@ -54,6 +54,11 @@ export function getTechnicalSkillsInfo() {
   return data.technicalSkills
 }
 
+// Helper function to get achievements information
+export function getAchievementsInfo() {
+  return (data as any).achievements || []
+}
+
 // Helper function to get meta information
 export function getMetaInfo() {
   return data.meta

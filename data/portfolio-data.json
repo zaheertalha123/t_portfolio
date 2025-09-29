@@ -1,41 +1,36 @@
 {
   "meta": {
-    "title": "Your Name | Your Role",
+    "title": "Muhammad Talha Zaheer | Full Stack Developer & Cybersecurity Professional",
     "description": "Short summary of your skills and experience."
   },
   "personal": {
-    "name": "Your Name",
-    "title": "Your Title",
-    "about": "Short professional bio goes here. Summarize your experience, focus areas, and what you’re looking for in 1-2 sentences.",
-    "profileImage": "/placeholder-user.jpg",
-    "location": "City, Country",
-    "email": "your.email@example.com",
-    "phone": "+1 (555) 000-0000",
-    "workingHours": "Available across time zones",
+    "name": "Muhammad Talha Zaheer",
+    "title": "Full Stack Developer & Cyber Security Professional",
+    "about": "Future-Focused Computer Scientist | Aspiring Cybersecurity Expert | Innovator in Technology and Digital Defense",
+    "profileImage": "/t_profile.jpeg",
+    "location": "Lahore, Pakistan",
+    "email": "thack3d@gmail.com",
+    "phone": "+92 (318) 7768296",
+    "workingHours": "Asynchronous-first, with dedicated availability for team sync-ups in any time zone.",
     "availableForWork": true,
-    "badges": ["React", "React Native", "TypeScript"],
+    "badges": ["Next.js", "Node.js", "Django Developer"],
     "social": [
       {
         "platform": "GitHub",
-        "url": "https://github.com/",
+        "url": "https://github.com/zaheertalha123",
         "icon": "Github"
       },
       {
         "platform": "LinkedIn",
-        "url": "https://www.linkedin.com/home",
+        "url": "https://www.linkedin.com/in/zaheertalha123/",
         "icon": "Linkedin"
-      },
-      {
-        "platform": "X",
-        "url": "https://x.com/?lang=en",
-        "icon": "Twitter"
       }
     ]
   },
   "languages": [
     {
       "name": "English",
-      "proficiency": "Fluent"
+      "proficiency": "Professional Working Proficiency"
     }
   ],
   "navigation": [
@@ -46,6 +41,10 @@
     {
       "label": "Experience",
       "href": "#experience"
+    },
+    {
+      "label": "Achievements",
+      "href": "#achievements"
     },
     {
       "label": "Education",
@@ -62,85 +61,136 @@
   ],
   "experience": [
     {
-      "title": "Job Title",
-      "company": "Company Name",
-      "companyUrl": "https://acme.ai/",
-      "period": "Start – End",
-      "description": "Brief description of your role and impact.",
+      "title": "Node JS Developer",
+      "company": "Core Edge Solutions",
+      "companyUrl": "https://www.coreedgesolution.com/",
+      "period": "May 2025 – Present",
+      "description": "Implemented web applications with integrated AI agents using Python and Node.js.",
       "achievements": [
-        "Led frontend development using modern frameworks (e.g., Next.js, TypeScript).",
-        "Collaborated across teams to deliver features on schedule.",
-        "Improved performance, accessibility, and UX across core journeys.",
-        "Integrated third‑party APIs and platform services as needed.",
-        "Contributed to CI/CD, testing, and release workflows.",
-        "Documented patterns and mentored teammates."
+        "Developed and deployed web applications with seamless AI agent integration in both Python and Node.js environments.",
+        "Designed and implemented RESTful APIs and real-time communication between web frontends and AI backends.",
+        "Integrated third-party AI services and custom machine learning models to enhance application intelligence.",
+        "Collaborated with cross-functional teams to deliver robust, scalable, and maintainable solutions.",
+        "Optimized application performance and reliability through testing, monitoring, and CI/CD pipelines.",
+        "Documented technical patterns and mentored team members on AI integration best practices."
       ]
     },
     {
-      "title": "Job Title",
-      "company": "Company Name",
-      "companyUrl": "https://acme.ai/",
-      "period": "Start – End",
-      "description": "Brief description of the product and your responsibilities.",
+      "title": "HTB Meetup Host",
+      "company": "Hack The Box",
+      "companyUrl": "https://www.hackthebox.com/",
+      "period": "April 2025 – Present",
+      "description": "Host online and on-campus cyber security events at various universities, teaching students about cyber security concepts and practices, and providing resources and opportunities to enhance their skills.",
       "achievements": [
-        "Shipped responsive UI with a modern design system.",
-        "Collaborated with product/design to iterate rapidly.",
-        "Integrated AI features and external APIs where appropriate.",
-        "Built cross‑platform experiences (web/mobile) as required.",
-        "Improved reliability through testing and monitoring.",
-        "Championed developer experience and documentation."
+        "Organized and hosted cyber security workshops and events for university students across multiple institutions.",
+        "Delivered engaging sessions on cyber security fundamentals, hands-on labs, and real-world scenarios.",
+        "Provided students with Hack The Box vouchers and curated resources to practice and improve their cyber security skills.",
+        "Mentored and guided students in navigating cyber security career paths and certifications.",
+        "Built a collaborative learning environment, fostering interest and participation in cyber security communities.",
+        "Coordinated with university faculty and Hack The Box to expand event reach and impact."
       ]
     }
   ],
   "education": [
     {
-      "degree": "Degree or Certification",
-      "institution": "Institution Name",
-      "year": "Year or Range"
+      "degree": "Intermediate ICS (98.45 %)",
+      "institution": "Superior College Hajipura Sialkot",
+      "year": "2021"
+    },
+    {
+      "degree": "Cyber Security Diploma",
+      "institution": "Professional Freelancing Training Program - PFTP",
+      "year": "June 2024 - May 2025"
+    },
+    {
+      "degree": "BS-CS (3.85 / 4.00)",
+      "institution": "University of Management and Technology, Lahore",
+      "year": "Nov 2021 - July 2025"
     }
   ],
   "technicalSkills": {
     "languagesFrameworks": [
-      "React (Next.js)",
-      "TypeScript/JavaScript", 
-      "React Native (Expo)",
-      "Electronjs",
-      "HTML5",
-      "CSS3"
+      "Python",
+      "C/C++",
+      "Node",
+      "Django Development",
+      "Android Development",
+      "Next JS",
+      "Metasploit Framework",
+      "DVWA"
+    ],
+    "cloudSecurity": [
+      "Amazon AWS",
+      "Firewall configuration",
+      "IPS/IDS configuration and management"
     ],
     "styling": [
-      "Tailwind CSS",
-      "Shadcn UI", 
-      "Material UI",
-      "Magic UI",
-      "NativeWind",
-      "React Native Elements"
+      "Tailwind",
+      "Bootstrap",
+      "CSS"
     ],
     "tools": [
       "Git/GitHub",
       "Git Actions for CI/CD",
       "Docker",
-      "Deployments (Vercel, Digital Ocean)"
+      "Deployments (Vercel, Digital Ocean, Runpod)"
     ],
     "ai": [
       "OpenAI",
-      "Google AI Studio",
+      "Langgraph",
       "Vercel AI SDK",
-      "Retell AI (Voice agents)"
+      "Retell AI (Voice agents)",
+      "AI Calling Agents"
     ],
     "productivity": [
-      "Figma",
-      "Framer",
       "Cursor",
-      "Codex",
-      "Lovable",
-      "v0",
-      "Balsamiq",
-      "Excalidraw",
+      "Draw.io",
       "Loom",
-      "Miro"
+      "Slack",
+      "Jira",
+      "Google Workspace",
+      "VS Code",
+      "Postman",
+      "Cherrytree"
     ]
   },
+  "achievements": [
+    {
+      "title": "Regional Round Participant",
+      "event": "Red Teaming, Digital Pakistan Cybersecurity Hackathon",
+      "description": "Reached the regional round in Red Teaming competition"
+    },
+    {
+      "title": "Finalist",
+      "event": "Blue Teaming, Digital Pakistan Cybersecurity Hackathon",
+      "description": "Achieved finalist position in Blue Teaming competition"
+    },
+    {
+      "title": "Mentor",
+      "event": "Cybersecurity Society, UMT",
+      "description": "Serving as a Mentor at the Cybersecurity Society, UMT"
+    },
+    {
+      "title": "CTF Organizer",
+      "event": "Professional Freelancing Training Program (PFTP)",
+      "description": "Organized Capture The Flag competitions at PFTP"
+    },
+    {
+      "title": "Team Leader",
+      "event": "Cyber Siege",
+      "description": "Led Cyber Siege team to conduct CTFs"
+    },
+    {
+      "title": "Peer Tutor",
+      "event": "University of Management and Technology (UMT)",
+      "description": "Served as a Peer Tutor in UMT"
+    },
+    {
+      "title": "Assistant",
+      "event": "NAVTTC Cybersecurity Training Programs",
+      "description": "Assisted in organizing and supporting cybersecurity training programs in NAVTTC"
+    }
+  ],
   "projects": [
     {
       "id": 1,

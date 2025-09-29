@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 	SOURCE OF TRUTH (JSON):\n${JSON.stringify(portfolioData)}\n`
 
   const result = streamText({
-    model: openai("gpt-5-mini"),
+    model: openai("gpt-4o-mini"),
     system: systemPrompt,
     messages: convertToModelMessages(messages),
     temperature: 0.3,
