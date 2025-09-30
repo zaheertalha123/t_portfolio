@@ -5,6 +5,7 @@ import "./globals.css";
 // import { ScrollProgressIndicator } from "@/components/scroll-progress-indicator"
 import { AnimationProvider } from "@/contexts/animation-context";
 import { getMetaInfo } from "@/lib/data";
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
