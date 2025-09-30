@@ -194,72 +194,87 @@
   "projects": [
     {
       "id": 1,
-      "slug": "ai-invoice-assistant",
-      "title": "AI Invoice Assistant",
+      "slug": "ctf-platform",
+      "title": "CTF Platform",
       "category": "Web Application",
-      "shortDescription": "AI-powered web app with natural language invoice management capabilities.",
+      "shortDescription": "Manage tasks, participants, and scores for competitions.",
       "description": [
-        "Some description for the project"
+        "A CTF platform for conducting Capture The Flag competitions. Manage tasks (Docker, static files, etc.), participants, and scores (team based scoring, task based scoring) for competitions."
       ],
       "features": [
-        "Natural language invoice management through AI chat interface",
-        "Full CRUD operations with API integration"
+        "Add static files, Docker tasks, etc.",
+        "Add participants, teams, and scores",
+        "Team based scoring, task based scoring",
+        "Track the progress of the competition"
       ],
-      "technologies": ["React", "Next.js", "TypeScript", "Vercel AI SDK", "OpenAI API", "API", "Tailwind CSS"],
-      "coverImage": "/job-finder-cover.png",
+      "technologies": ["Django", "Bootstrap", "PostgreSQL", "Docker", "Git", "Linux"],
+      "coverImage": "/ctf_portal_cover.png",
       "gallery": [
-        { "url": "/job-finder-screen1.png" },
-        { "url": "/job-finder-screen2.png" }
+        { "url": "/ctf_portal_01.jpg" },
+        { "url": "/ctf_portal_02.jpg" },
+        { "url": "/ctf_portal_03.jpg" },
+        { "url": "/ctf_portal_04.jpg" },
+        { "url": "/ctf_portal_05.jpg" }
       ],
       "timeline": "Personal Project (2024)",
       "role": "Full-Stack Developer",
-      "githubUrl": "https://github.com/"
+      "githubUrl": ""
     },
     {
       "id": 2,
-      "slug": "ai-recalibration-app",
-      "title": "The Recalibration App",
+      "slug": "darzee-mobile-app",
+      "title": "Darzee Mobile App",
       "category": "Mobile App",
-      "shortDescription": "React Native mobile app with AI-powered emotional analysis and personalized mental wellness tracking.",
+      "shortDescription": "Platform for connecting tailors and customers.",
       "description": [
-        "Some description for the project"
+        "A mobile app for connecting tailors and customers. Users can order custom clothes and track the progress of their orders. find nearest tailors and get quotes for their services."
       ],
       "features": [
-        "AI-powered emotional analysis of daily entries",
-        "Daily concern logging with intelligent categorization"
+        "Add tailors, customers, and orders",
+        "Track the progress of the orders",
+        "Find nearest tailors and get quotes for their services"
       ],
-      "technologies": ["React Native", "Expo", "TypeScript", "AI/ML APIs", "SQLite", "React Native Elements", "NativeWind"],
-      "coverImage": "/finance-dashboard-cover.png",
+      "technologies": ["Django Rest Framework", "Bootstrap", "PostgreSQL", "Kotlin", "Android Studio", "Jetpack Compose", "Git"],
+      "coverImage": "/darzee_mobile_cover.png",
       "gallery": [
-
-        { "url": "/finance-dashboard-screen3.png" }
+        { "url": "/darzee_mobile_01.jpg" },
+        { "url": "/darzee_mobile_02.jpg" },
+        { "url": "/darzee_mobile_03.jpg" },
+        { "url": "/darzee_mobile_04.jpg" },
+        { "url": "/darzee_mobile_05.jpg" }
       ],
-      "timeline": "Personal Project (2024)",
-      "role": "Mobile Developer & UX Designer",
-      "githubUrl": "https://github.com/"
+      "timeline": "Personal Project (2024-2025)",
+      "role": "Full-Stack Developer",
+      "githubUrl": ""
     },
     {
       "id": 3,
-      "slug": "solutions-projects",
-      "title": "Solutions Projects",
+      "slug": "pos-system",
+      "title": "POS System",
       "category": "Professional Work",
-      "shortDescription": "Web applications built with modern tech stack.",
+      "shortDescription": "POS System for a Restaurant.",
       "description": [
-        "Some description for the company"
+        "A POS System for a Restaurant. It allows the restaurant to manage their menu items, deals, and orders with printing receipts and storing data on a server."
       ],
       "features": [
-          "AI-powered emotional analysis of daily entries",
-        "Daily concern logging with intelligent categorization"
+        "Manage menu items, deals, and orders",
+        "Print receipts",
+        "Store data on a server"
       ],
-      "technologies": ["React Native", "Expo", "TypeScript", "AI/ML APIs", "SQLite", "React Native Elements", "NativeWind"],
-      "coverImage": "/finance-dashboard-cover.png",
+      "technologies": ["Node.js", "Electron", "Next.js", "Supabase", "Git"],
+      "coverImage": "/pos_cover.png",
       "gallery": [
-
-        { "url": "/finance-dashboard-screen3.png" }
+        { "url": "/pos_01.png" },
+        { "url": "/pos_02.png" },
+        { "url": "/pos_03.png" },
+        { "url": "/pos_04.png" },
+        { "url": "/pos_05.png" },
+        { "url": "/pos_06.png" },
+        { "url": "/pos_07.png" }
       ],
-      "timeline": "Personal Project (2024)",
-      "role": "Mobile Developer & UX Designer",
-      "githubUrl": "https://github.com/"
+      "timeline": "Professional Work (2025)",
+      "role": "Full-Stack Developer",
+      "githubUrl": ""
     }
   ]
 }

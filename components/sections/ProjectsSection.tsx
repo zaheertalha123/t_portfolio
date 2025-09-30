@@ -9,6 +9,7 @@ import { ProjectCard } from "@/components/projects/project-card";
 import Image from "next/image";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { MobileProjectViewer } from "@/components/projects/mobile-project-viewer";
+import { ImageModal } from "@/components/ui/image-modal";
 import { getProjectBySlug } from "@/lib/data";
 import type { Project } from "@/lib/data";
 
@@ -17,6 +18,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const selectedProject = selectedSlug ? getProjectBySlug(selectedSlug) : null;
   const [desktopImageIdx, setDesktopImageIdx] = useState(0);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   const desktopImages = useMemo(() => {
     if (!selectedProject) return [] as string[];
@@ -94,48 +96,35 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                       </div>
                     )}
 
-                  {selectedProject.client && (
-                    <div className="text-sm">
-                      <div className="text-zinc-400">Client</div>
-                      <div className="text-white">{selectedProject.client}</div>
-                    </div>
-                  )}
-
                   <div className="flex gap-2 pt-2">
-                    {selectedProject.liveUrl && (
-                      <Button
-                        asChild
-                        size="sm"
-                        variant="outline"
-                        className="border-none rounded-xl"
-                      >
-                        <a href={selectedProject.liveUrl} target="_blank">
-                          Visit Site
-                        </a>
-                      </Button>
-                    )}
-                    {selectedProject.githubUrl && (
-                      <Button
-                        asChild
-                        size="sm"
-                        variant="outline"
-                        className="border-none rounded-xl"
-                      >
+                    <Button
+                      asChild={!!selectedProject.githubUrl}
+                      size="sm"
+                      variant="outline"
+                      className="border-none rounded-xl"
+                      disabled={!selectedProject.githubUrl}
+                    >
+                      {selectedProject.githubUrl ? (
                         <a href={selectedProject.githubUrl} target="_blank">
                           View Code
                         </a>
-                      </Button>
-                    )}
+                      ) : (
+                        <span>Code Available on Demand</span>
+                      )}
+                    </Button>
                   </div>
                 </div>
 
                 <div className="w-full h-full flex flex-col items-center justify-center rounded-xl">
-                  <div className="relative xl:size-[80%] size-[100%] overflow-hidden">
+                  <div 
+                    className="relative xl:size-[80%] size-[100%] overflow-hidden cursor-pointer"
+                    onClick={() => setIsImageModalOpen(true)}
+                  >
                     <Image
                       src={desktopImages[desktopImageIdx] || "/placeholder.svg"}
                       alt={selectedProject.title}
                       fill
-                      className="object-cover rounded-xl"
+                      className="object-contain rounded-xl"
                     />
                   </div>
 
@@ -176,6 +165,17 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
           )}
         </DrawerContent>
       </Drawer>
+
+      {/* Image Modal for enlarged view */}
+      {selectedProject && desktopImages.length > 0 && (
+        <ImageModal
+          images={desktopImages}
+          currentIndex={desktopImageIdx}
+          isOpen={isImageModalOpen}
+          onClose={() => setIsImageModalOpen(false)}
+          onIndexChange={setDesktopImageIdx}
+        />
+      )}
     </AnimatedSection>
   );
 }

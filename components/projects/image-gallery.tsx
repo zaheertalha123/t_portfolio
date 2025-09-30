@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ImageModal } from "@/components/ui/image-modal";
 
 interface ImageGalleryProps {
   images: string[];
@@ -21,6 +22,7 @@ export function ImageGallery({
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -112,7 +114,10 @@ export function ImageGallery({
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="relative w-full h-full flex items-center justify-center p-4">
+        <div 
+          className="relative w-full h-full flex items-center justify-center p-4 cursor-pointer"
+          onClick={() => setIsImageModalOpen(true)}
+        >
           <Image
             src={images[currentIndex]}
             alt={`Gallery image ${currentIndex + 1}`}
@@ -123,6 +128,15 @@ export function ImageGallery({
           />
         </div>
       </div>
+
+      {/* Image Modal for enlarged view */}
+      <ImageModal
+        images={images}
+        currentIndex={currentIndex}
+        isOpen={isImageModalOpen}
+        onClose={() => setIsImageModalOpen(false)}
+        onIndexChange={setCurrentIndex}
+      />
     </div>
   );
 }
