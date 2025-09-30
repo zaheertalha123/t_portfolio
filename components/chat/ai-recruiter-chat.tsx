@@ -85,7 +85,7 @@ export function AIRecruiterChat() {
                   <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400 animate-bounce" />
                 </div>
                 <h4 className="text-sm sm:text-base lg:text-lg font-medium text-zinc-100 px-2">
-                  Is this candidate a good fit?
+                  Is Talha a good fit?
                 </h4>
                 <p className="max-w-sm sm:max-w-md text-zinc-400 text-xs sm:text-sm lg:text-base px-2">
                   Ask about specific skills or paste job description.

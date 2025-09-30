@@ -101,7 +101,7 @@ export function MobileChatModal({ onClose }: MobileChatModalProps) {
                 <MessageCircle className="w-6 h-6 text-cyan-400 animate-bounce" />
               </div>
               <h4 className="text-lg font-medium text-zinc-100">
-                Is this candidate a good fit?
+                Is Talha a good fit?
               </h4>
               <p className="max-w-md text-zinc-400 text-sm">
                 Ask about specific skills or paste job description.
