@@ -42,14 +42,14 @@ function formatSocialUrl(platform: string, url: string): string {
 }
 
 export function ProfileCard() {
-  const [activeTab, setActiveTab] = useState("about");
+  const [activeTab, setActiveTab] = useState("contact");
 
   const personalInfo = getPersonalInfo();
   const languages = getLanguagesInfo();
 
   return (
-    <Card className="bg-zinc-900/70 border-zinc-800 backdrop-blur-sm col-span-1 flex flex-col h-full rounded-xl overflow-clip">
-      <CardContent className="p-0 flex-1 flex flex-col overflow-hidden">
+    <Card className="bg-zinc-900/70 border-zinc-800 backdrop-blur-sm col-span-1 flex flex-col h-full rounded-xl overflow-hidden max-h-full lg:max-h-[calc(100vh-6rem)]">
+      <CardContent className="p-0 flex-1 flex flex-col overflow-hidden min-h-0">
         <div className="bg-gradient-to-r from-zinc-800/50 to-zinc-900/50 p-3 sm:p-4 flex flex-col items-center border-b border-zinc-800">
           <div className="flex flex-col items-center w-full">
             <div className="my-3 sm:my-4">
@@ -88,23 +88,12 @@ export function ProfileCard() {
         </div>
 
         <Tabs
-          defaultValue="about"
-          className="w-full"
+          defaultValue="contact"
+          className="w-full flex flex-col flex-1 min-h-0"
           onValueChange={setActiveTab}
         >
           <div className="border-b border-zinc-800">
             <TabsList className="w-full bg-transparent border-b border-zinc-800 rounded-none h-auto p-0">
-              <TabsTrigger
-                value="about"
-                className={`flex-1 rounded-none border-b-2 px-3 sm:px-3 py-2 sm:py-1.5 text-xs sm:text-sm ${
-                  activeTab === "about"
-                    ? "border-cyan-400 text-cyan-400"
-                    : "border-transparent text-zinc-200"
-                }`}
-              >
-                <User className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                About
-              </TabsTrigger>
               <TabsTrigger
                 value="contact"
                 className={`flex-1 rounded-none border-b-2 px-3 sm:px-3 py-2 sm:py-1.5 text-xs sm:text-sm ${
@@ -116,12 +105,23 @@ export function ProfileCard() {
                 <Mail className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                 Connect
               </TabsTrigger>
+              <TabsTrigger
+                value="about"
+                className={`flex-1 rounded-none border-b-2 px-3 sm:px-3 py-2 sm:py-1.5 text-xs sm:text-sm ${
+                  activeTab === "about"
+                    ? "border-cyan-400 text-cyan-400"
+                    : "border-transparent text-zinc-200"
+                }`}
+              >
+                <User className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                About
+              </TabsTrigger>
             </TabsList>
           </div>
 
           <TabsContent
             value="about"
-            className="p-3 sm:p-4 space-y-4 focus:outline-none"
+            className="p-3 sm:p-4 space-y-4 focus:outline-none flex-1 overflow-y-auto scrollbar-hide min-h-0"
           >
             {personalInfo.about && (
               <p className="text-gray-300 leading-relaxed mb-8">
@@ -180,7 +180,7 @@ export function ProfileCard() {
 
           <TabsContent
             value="contact"
-            className="p-3 sm:p-4 space-y-4 focus:outline-none"
+            className="p-3 sm:p-4 space-y-4 focus:outline-none flex-1 overflow-y-auto scrollbar-hide min-h-0"
           >
             {/* Social Links */}
             <div className="space-y-4">
