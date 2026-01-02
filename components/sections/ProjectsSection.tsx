@@ -7,9 +7,7 @@ import { Button } from "@/components/ui/button";
 import { GlobeIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import { ProjectCard } from "@/components/projects/project-card";
 import Image from "next/image";
-import { Drawer, DrawerContent } from "@/components/ui/drawer";
-import { MobileProjectViewer } from "@/components/projects/mobile-project-viewer";
-import { ImageModal } from "@/components/ui/image-modal";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { getProjectBySlug } from "@/lib/data";
 import type { Project } from "@/lib/data";
 
@@ -17,10 +15,9 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
   const [open, setOpen] = useState(false);
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const selectedProject = selectedSlug ? getProjectBySlug(selectedSlug) : null;
-  const [desktopImageIdx, setDesktopImageIdx] = useState(0);
-  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [imageIdx, setImageIdx] = useState(0);
 
-  const desktopImages = useMemo(() => {
+  const images = useMemo(() => {
     if (!selectedProject) return [] as string[];
     const gallery =
       (selectedProject as any).gallery?.map((g: { url: string }) => g.url) ||
@@ -31,7 +28,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
   }, [selectedProject]);
 
   useEffect(() => {
-    if (open) setDesktopImageIdx(0);
+    if (open) setImageIdx(0);
   }, [open, selectedSlug]);
 
   return (
@@ -67,91 +64,61 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
           </div>
         </CardContent>
       </Card>
-      <Drawer open={open} onOpenChange={setOpen}>
-        <DrawerContent className="bg-zinc-950 border-zinc-800">
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-zinc-950 border-zinc-800 rounded-xl">
           {selectedProject && (
-            <div className="container mx-auto p-4 sm:p-6">
-              <MobileProjectViewer project={selectedProject} />
+            <div className="space-y-6 p-2 pt-0">
 
-              {/* Desktop/Tablet: side-by-side layout */}
-              <div className="hidden md:grid grid-cols-2 gap-4 sm:gap-6 items-center">
-                <div className="space-y-4  ">
-                  <div className="text-sm sm:text-base text-cyan-400">
-                    {selectedProject.category}
-                  </div>
-                  <h2 className="text-xl sm:text-2xl font-semibold">
-                    {selectedProject.title}
-                  </h2>
-                  <p className="text-zinc-400 text-sm">
-                    {selectedProject.shortDescription}
-                  </p>
-                  {selectedProject.description &&
-                    selectedProject.description.length > 0 && (
-                      <div className="space-y-3 text-sm text-zinc-300">
-                        {selectedProject.description
-                          .slice(0, 2)
-                          .map((paragraph, idx) => (
-                            <p key={idx}>{paragraph}</p>
-                          ))}
-                      </div>
-                    )}
-
-                  <div className="flex gap-2 pt-2">
-                    <Button
-                      asChild={!!selectedProject.githubUrl}
-                      size="sm"
-                      variant="outline"
-                      className="border-none rounded-xl"
-                      disabled={!selectedProject.githubUrl}
-                    >
-                      {selectedProject.githubUrl ? (
-                        <a href={selectedProject.githubUrl} target="_blank">
-                          View Code
-                        </a>
-                      ) : (
-                        <span>Code Available on Demand</span>
-                      )}
-                    </Button>
-                  </div>
+              {/* Header */}
+              <div className="space-y-2">
+                <div className="text-sm text-cyan-400">
+                  {selectedProject.category}
                 </div>
+                <h2 className="text-2xl font-semibold">
+                  {selectedProject.title}
+                </h2>
+                <p className="text-zinc-400">
+                  {selectedProject.shortDescription}
+                </p>
+              </div>
 
-                <div className="w-full h-full flex flex-col items-center justify-center rounded-xl">
-                  <div 
-                    className="relative xl:size-[80%] size-[100%] overflow-hidden cursor-pointer"
-                    onClick={() => setIsImageModalOpen(true)}
-                  >
+              {/* Image Slider */}
+              {images.length > 0 && (
+                <div className="space-y-4">
+                  <div className="relative w-full aspect-video bg-zinc-800/50 rounded-xl overflow-hidden">
                     <Image
-                      src={desktopImages[desktopImageIdx] || "/placeholder.svg"}
+                      src={images[imageIdx] || "/placeholder.svg"}
                       alt={selectedProject.title}
                       fill
-                      className="object-contain rounded-xl"
+                      className="object-contain"
                     />
                   </div>
 
-                  {desktopImages.length > 1 && (
-                    <div className="flex items-center gap-3 mt-3">
+                  {/* Image Navigation */}
+                  {images.length > 1 && (
+                    <div className="flex items-center justify-center gap-3">
                       <Button
                         size="icon"
                         variant="outline"
                         className="h-9 w-9 rounded-full"
                         onClick={() =>
-                          setDesktopImageIdx((i) =>
-                            i === 0 ? desktopImages.length - 1 : i - 1
+                          setImageIdx((i) =>
+                            i === 0 ? images.length - 1 : i - 1
                           )
                         }
                       >
                         <ChevronLeft className="h-4 w-4" />
                       </Button>
-                      <span className="text-xs text-zinc-400">
-                        {desktopImageIdx + 1} of {desktopImages.length}
+                      <span className="text-xs text-zinc-400 min-w-[60px] text-center">
+                        {imageIdx + 1} of {images.length}
                       </span>
                       <Button
                         size="icon"
                         variant="outline"
                         className="h-9 w-9 rounded-full"
                         onClick={() =>
-                          setDesktopImageIdx((i) =>
-                            i === desktopImages.length - 1 ? 0 : i + 1
+                          setImageIdx((i) =>
+                            i === images.length - 1 ? 0 : i + 1
                           )
                         }
                       >
@@ -160,22 +127,72 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                     </div>
                   )}
                 </div>
+              )}
+
+              {/* Description */}
+              {selectedProject.description &&
+                selectedProject.description.length > 0 && (
+                  <div className="space-y-3 text-sm text-zinc-300">
+                    {selectedProject.description.map((paragraph, idx) => (
+                      <p key={idx}>{paragraph}</p>
+                    ))}
+                  </div>
+                )}
+
+              {/* Features */}
+              {(selectedProject as any).features && (selectedProject as any).features.length > 0 && (
+                <div className="space-y-2">
+                  <h3 className="font-semibold text-zinc-300">Features</h3>
+                  <ul className="space-y-1 text-sm text-zinc-400">
+                    {(selectedProject as any).features.map((feature: string, idx: number) => (
+                      <li key={idx} className="flex items-center gap-2">
+                        <span className="text-cyan-400 text-lg leading-none">•</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Technologies */}
+              {(selectedProject as any).technologies && (selectedProject as any).technologies.length > 0 && (
+                <div className="space-y-2">
+                  <h3 className="font-semibold text-zinc-300">Technologies</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {(selectedProject as any).technologies.map((tech: string, idx: number) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 bg-zinc-800 text-zinc-300 text-xs rounded-full"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* CTA Button */}
+              <div className="flex gap-2 pt-4">
+                <Button
+                  asChild={!!selectedProject.githubUrl}
+                  size="sm"
+                  variant="outline"
+                  className="border-cyan-400/30 rounded-xl"
+                  disabled={!selectedProject.githubUrl}
+                >
+                  {selectedProject.githubUrl ? (
+                    <a href={selectedProject.githubUrl} target="_blank">
+                      View Code
+                    </a>
+                  ) : (
+                    <span>Code Available on Demand</span>
+                  )}
+                </Button>
               </div>
             </div>
           )}
-        </DrawerContent>
-      </Drawer>
-
-      {/* Image Modal for enlarged view */}
-      {selectedProject && desktopImages.length > 0 && (
-        <ImageModal
-          images={desktopImages}
-          currentIndex={desktopImageIdx}
-          isOpen={isImageModalOpen}
-          onClose={() => setIsImageModalOpen(false)}
-          onIndexChange={setDesktopImageIdx}
-        />
-      )}
+        </DialogContent>
+      </Dialog>
     </AnimatedSection>
   );
 }

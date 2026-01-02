@@ -17,6 +17,7 @@ interface MobileHeaderProps {
   }>;
   activeSection: string;
   scrollToSection: (href: string) => void;
+  onOpenChat?: () => void;
 }
 
 export function MobileHeader({
@@ -24,6 +25,7 @@ export function MobileHeader({
   orderedNavItems,
   activeSection,
   scrollToSection,
+  onOpenChat,
 }: MobileHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -86,6 +88,7 @@ export function MobileHeader({
             const isActive = item.href.startsWith("#")
               ? activeSection === item.href.substring(1)
               : false;
+            const isAIChat = item.href === "#ai-chat";
 
             return (
               <Link
@@ -98,6 +101,13 @@ export function MobileHeader({
                     : "text-zinc-200 hover:text-white hover:bg-zinc-800/60"
                 )}
                 onClick={(e) => {
+                  if (isAIChat) {
+                    e.preventDefault();
+                    onOpenChat?.();
+                    setMobileMenuOpen(false);
+                    return;
+                  }
+
                   const href = item.href;
                   const isHash = href.startsWith("#");
                   const isHome =

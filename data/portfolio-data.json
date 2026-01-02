@@ -61,41 +61,88 @@
   ],
   "experience": [
     {
-      "title": "Node JS Developer",
+      "title": "Developer",
+      "company": "Pacifica Trucks LLC",
+      "companyUrl": "https://www.pacificatrucks.com/",
+      "period": "July 2025 – Present",
+      "description": "Built Node.js automation scripts, AI-powered voice agents, and dynamic query generation system for Trinium logistics database.",
+      "achievements": [
+        "Developed automation scripts using Puppeteer to streamline business workflows",
+        "Built FastAPI endpoints to fetch real-time data directly from Trinium Linked DB",
+        "Implemented voice agents with Pipecat for handling customer queries and support",
+        "Designed AI-powered query bot using Vercel AI SDK with tool calling to generate executable Trinium DB queries",
+        "Mastered Trinium DB structure to efficiently fetch and process logistics data"
+      ]
+    },
+    {
+      "title": "Full Stack Developer",
       "company": "Core Edge Solutions",
       "companyUrl": "https://www.coreedgesolution.com/",
       "period": "May 2025 – Present",
       "description": "Implemented web applications with integrated AI agents using Python and Node.js.",
       "achievements": [
-        "Developed and deployed web applications with seamless AI agent integration in both Python and Node.js environments.",
-        "Designed and implemented RESTful APIs and real-time communication between web frontends and AI backends.",
-        "Integrated third-party AI services and custom machine learning models to enhance application intelligence.",
-        "Collaborated with cross-functional teams to deliver robust, scalable, and maintainable solutions.",
-        "Optimized application performance and reliability through testing, monitoring, and CI/CD pipelines.",
-        "Documented technical patterns and mentored team members on AI integration best practices."
+        "Built web applications with AI agent integration using Python and Node.js",
+        "Designed RESTful APIs and real-time communication for web-AI backends",
+        "Integrated third-party AI services and custom ML models",
+        "Optimized performance through testing, monitoring, and CI/CD pipelines",
+        "Mentored team members on AI integration best practices"
       ]
     },
     {
       "title": "HTB Meetup Host",
       "company": "Hack The Box",
-      "companyUrl": "https://www.hackthebox.com/",
+      "companyUrl": "https://www.hackthebox.com/meetups",
       "period": "April 2025 – Present",
       "description": "Host online and on-campus cyber security events at various universities, teaching students about cyber security concepts and practices, and providing resources and opportunities to enhance their skills.",
       "achievements": [
-        "Organized and hosted cyber security workshops and events for university students across multiple institutions.",
-        "Delivered engaging sessions on cyber security fundamentals, hands-on labs, and real-world scenarios.",
-        "Provided students with Hack The Box vouchers and curated resources to practice and improve their cyber security skills.",
-        "Mentored and guided students in navigating cyber security career paths and certifications.",
-        "Built a collaborative learning environment, fostering interest and participation in cyber security communities.",
-        "Coordinated with university faculty and Hack The Box to expand event reach and impact."
+        "Organized cyber security workshops and events across multiple universities",
+        "Delivered sessions on security fundamentals, hands-on labs, and real-world scenarios",
+        "Provided HTB vouchers and curated resources for skill development",
+        "Mentored students on career paths and certifications",
+        "Built collaborative learning environment fostering community participation"
+      ]
+    },
+    {
+      "title": "Course Instructor",
+      "company": "Hunarmand Punjab",
+      "companyUrl": "https://hunarmandpunjab.pk/",
+      "period": "Sep 2025 - Oct 2025",
+      "description": "Developed and recorded comprehensive cyber security and penetration testing courses with 24 lectures featuring 80% practical hands-on content.",
+      "achievements": [
+        "Recorded 24 lectures covering cyber security and penetration testing concepts",
+        "Designed courses with 80% practical content to provide hands-on knowledge",
+        "Created interactive learning objectives and tasks within lectures for online students",
+        "Structured curriculum to enable self-paced learning while maintaining engagement",
+        "Delivered practical pentesting and security labs for enrolled students"
+      ]
+    },
+    {
+      "title": "Cyber Security Intern",
+      "company": "Professional Freelancing Training Program - PFTP",
+      "companyUrl": "https://pftpedu.org/",
+      "period": "Nov 2024 - Apr 2025",
+      "description": "Gained practical hands-on experience in network security, vulnerability exploitation, and defense mechanisms including firewall configuration and penetration testing.",
+      "achievements": [
+        "Configured pfSense firewall with IDS/IPS for network threat detection and prevention",
+        "Deployed Web Application Firewall (WAF) on vulnerable sites for application-level protection",
+        "Set up and configured Loki scanner for malware detection and analysis",
+        "Conducted DoS attack simulations using hping3, LOIC, and HOIC tools",
+        "Exploited shadow file vulnerabilities and demonstrated privilege escalation techniques",
+        "Performed network traffic analysis and packet inspection using Wireshark",
+        "Executed Nmap scanning and vulnerability exploitation including EternalBlue and macro-based attacks on Windows systems"
       ]
     }
   ],
   "education": [
     {
-      "degree": "Intermediate ICS (98.45 %)",
-      "institution": "Superior College Hajipura Sialkot",
-      "year": "2021"
+      "degree": "BS-CS",
+      "institution": "University of Management and Technology, Lahore",
+      "year": "Nov 2021 - July 2025"
+    },
+    {
+      "degree": "Digital Forensic & Cyber Security",
+      "institution": "NAVTTC - National Vocational & Technical Training Commission",
+      "year": "April 2025 - June 2025"
     },
     {
       "degree": "Cyber Security Diploma",
@@ -103,9 +150,9 @@
       "year": "June 2024 - May 2025"
     },
     {
-      "degree": "BS-CS (3.85 / 4.00)",
-      "institution": "University of Management and Technology, Lahore",
-      "year": "Nov 2021 - July 2025"
+      "degree": "Intermediate ICS",
+      "institution": "Superior College Hajipura Sialkot",
+      "year": "2021"
     }
   ],
   "technicalSkills": {
@@ -115,7 +162,7 @@
       "Node",
       "Django Development",
       "Android Development",
-      "Next JS",
+      "Node JS",
       "Metasploit Framework",
       "DVWA"
     ],
@@ -133,14 +180,15 @@
       "Git/GitHub",
       "Git Actions for CI/CD",
       "Docker",
-      "Deployments (Vercel, Digital Ocean, Runpod)"
+      "Deployments (Vercel, Digital Ocean, Runpod, Railway)"
     ],
     "ai": [
       "OpenAI",
       "Langgraph",
       "Vercel AI SDK",
       "Retell AI (Voice agents)",
-      "AI Calling Agents"
+      "AI Calling Agents",
+      "Pipecat"
     ],
     "productivity": [
       "Cursor",
@@ -208,13 +256,13 @@
         "Track the progress of the competition"
       ],
       "technologies": ["Django", "Bootstrap", "PostgreSQL", "Docker", "Git", "Linux"],
-      "coverImage": "/ctf_portal_cover.png",
+      "coverImage": "/django.png",
       "gallery": [
-        { "url": "/ctf_portal_01.jpg" },
-        { "url": "/ctf_portal_02.jpg" },
-        { "url": "/ctf_portal_03.jpg" },
-        { "url": "/ctf_portal_04.jpg" },
-        { "url": "/ctf_portal_05.jpg" }
+        { "url": "/ctf_portal/ctf_portal_01.png" },
+        { "url": "/ctf_portal/ctf_portal_02.png" },
+        { "url": "/ctf_portal/ctf_portal_03.png" },
+        { "url": "/ctf_portal/ctf_portal_04.png" },
+        { "url": "/ctf_portal/ctf_portal_05.png" }
       ],
       "timeline": "Personal Project (2024)",
       "role": "Full-Stack Developer",
@@ -235,13 +283,13 @@
         "Find nearest tailors and get quotes for their services"
       ],
       "technologies": ["Django Rest Framework", "Bootstrap", "PostgreSQL", "Kotlin", "Android Studio", "Jetpack Compose", "Git"],
-      "coverImage": "/darzee_mobile_cover.png",
+      "coverImage": "/android-studio.png",
       "gallery": [
-        { "url": "/darzee_mobile_01.jpg" },
-        { "url": "/darzee_mobile_02.jpg" },
-        { "url": "/darzee_mobile_03.jpg" },
-        { "url": "/darzee_mobile_04.jpg" },
-        { "url": "/darzee_mobile_05.jpg" }
+        { "url": "/darzee_mobile/darzee_mobile_01.jpg" },
+        { "url": "/darzee_mobile/darzee_mobile_02.jpg" },
+        { "url": "/darzee_mobile/darzee_mobile_03.jpg" },
+        { "url": "/darzee_mobile/darzee_mobile_04.jpg" },
+        { "url": "/darzee_mobile/darzee_mobile_05.jpg" }
       ],
       "timeline": "Personal Project (2024-2025)",
       "role": "Full-Stack Developer",
@@ -259,21 +307,106 @@
       "features": [
         "Manage menu items, deals, and orders",
         "Print receipts",
-        "Store data on a server"
+        "Works both online and offline",
+        "Store data on a server",
+        "Realtime updates for orders",
+        "Manage mobile and desktop printers",
+        "CRUD waiters, tables, discounts, categories, and more",
+        "30 Days Stats and Reports"
       ],
       "technologies": ["Node.js", "Electron", "Next.js", "Supabase", "Git"],
-      "coverImage": "/pos_cover.png",
+      "coverImage": "/electron.png",
       "gallery": [
-        { "url": "/pos_01.png" },
-        { "url": "/pos_02.png" },
-        { "url": "/pos_03.png" },
-        { "url": "/pos_04.png" },
-        { "url": "/pos_05.png" },
-        { "url": "/pos_06.png" },
-        { "url": "/pos_07.png" }
+        { "url": "/pos/pos_01.png" },
+        { "url": "/pos/pos_02.png" },
+        { "url": "/pos/pos_03.png" },
+        { "url": "/pos/pos_04.png" },
+        { "url": "/pos/pos_05.png" },
+        { "url": "/pos/pos_06.png" }
       ],
       "timeline": "Professional Work (2025)",
       "role": "Full-Stack Developer",
+      "githubUrl": ""
+    },
+    {
+      "id": 4,
+      "slug": "waiter-app",
+      "title": "Waiter App",
+      "category": "Professional Work",
+      "shortDescription": "Waiter App for a Restaurant.",
+      "description": [
+        "A Waiter App integrated with POS System for a Restaurant. It allows waiters to take orders from customers and send them to the POS System with printing receipts and storing data on a server with realtime updates."
+      ],
+      "features": [
+        "Take orders from customers",
+        "Print receipts",
+        "Store data on a server with realtime updates",
+        "Add items to ongoing order",
+        "See order status in real-time"
+      ],
+      "technologies": ["Node.js", "Electron", "Next.js", "Supabase", "Git"],
+      "coverImage": "/expo.png",
+      "gallery": [
+        { "url": "/waiter_app/waiter_app_01.jpeg" },
+        { "url": "/waiter_app/waiter_app_02.jpeg" },
+        { "url": "/waiter_app/waiter_app_03.jpeg" },
+        { "url": "/waiter_app/waiter_app_04.jpeg" },
+        { "url": "/waiter_app/waiter_app_05.jpeg" },
+        { "url": "/waiter_app/waiter_app_06.jpeg" },
+        { "url": "/waiter_app/waiter_app_07.jpeg" }
+      ],
+      "timeline": "Professional Work (2025)",
+      "role": "Full-Stack Developer",
+      "githubUrl": ""
+    },
+    {
+      "id": 5,
+      "slug": "pos-system-offline",
+      "title": "POS System (Offline)",
+      "category": "Professional Work",
+      "shortDescription": "POS System for a Bakery.",
+      "description": [
+        "A POS System for a Bakery. It allows the bakery to manage their menu items, deals, and orders with printing receipts and storing data locally."
+      ],
+      "features": [
+        "Manage menu items, deals, and orders",
+        "Print receipts",
+        "Store data locally"
+      ],
+      "technologies": ["Node.js", "Electron", "Next.js", "SQLite", "Git"],
+      "coverImage": "/electron.png",
+      "gallery": [
+        { "url": "/pos_offline/pos_offline_01.png" },
+        { "url": "/pos_offline/pos_offline_02.png" },
+        { "url": "/pos_offline/pos_offline_03.png" },
+        { "url": "/pos_offline/pos_offline_04.png" },
+        { "url": "/pos_offline/pos_offline_05.png" },
+        { "url": "/pos_offline/pos_offline_06.png" }
+      ],
+      "timeline": "Professional Work (2025)",
+      "role": "Full-Stack Developer",
+      "githubUrl": ""
+    },
+    {
+      "id": 6,
+      "slug": "file-sync-system",
+      "title": "File Sync System",
+      "category": "C++ Application",
+      "shortDescription": "C++ App for storing and syncing files in local network.",
+      "description": [
+        "A C++ App for storing and syncing files in local network. It allows users to store and sync files between multiple devices in a local network without internet connection."
+      ],
+      "features": [
+        "Can load million of files in AVL tree for fast access",
+        "Both client and server applications using WinSock library",
+        "Sync files between multiple devices in local network",
+        "Server handles each client in a separate thread for concurrent connections"
+      ],
+      "technologies": ["C++", "WinSock", "AVL Tree", "Visual Studio 2013","Git"],
+      "coverImage": "/c_plus_plus.png",
+      "gallery": [],
+      "timeline": "Personal Project (2023)",
+      "role": "C++ Developer",
       "githubUrl": ""
     }
   ]

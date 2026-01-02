@@ -1,6 +1,6 @@
 import { AnimatedSection } from "@/components/layout/animated-section";
 import { Card, CardContent } from "@/components/ui/card";
-import { TrophyIcon } from "lucide-react";
+import { TrophyIcon, Info } from "lucide-react";
 
 type Achievement = {
   title: string;
@@ -22,28 +22,30 @@ export function AchievementsSection({
             <h3 className="text-lg font-medium">Achievements</h3>
           </div>
 
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             {achievements.map((achievement, index) => (
-              <div key={index}>
-                <AnimatedSection animation="fade-up" delay={100 * (index + 1)}>
-                  <div className="bg-zinc-800/30 rounded-xl p-3 sm:p-4 border border-zinc-700/50 hover:border-cyan-400/30 transition-colors">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-1">
-                      <h4 className="text-sm font-semibold text-cyan-400 mb-1 sm:mb-0">
-                        {achievement.title}
-                      </h4>
+              <AnimatedSection key={index} animation="fade-up" delay={100 * (index + 1)}>
+                <div className="bg-zinc-800/30 rounded-xl p-3 sm:p-4 border border-zinc-700/50 hover:border-cyan-400/30 transition-colors h-full">
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <h4 className="text-sm font-semibold text-cyan-400 flex-1">
+                      {achievement.title}
+                    </h4>
+                    <div className="relative group flex-shrink-0">
+                      <Info className="w-4 h-4 text-zinc-400 hover:text-cyan-400 cursor-help transition-colors" />
+                      <div className="absolute bottom-full right-0 mb-2 hidden group-hover:block z-50 pointer-events-none">
+                        <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-2 shadow-lg max-w-xs w-64">
+                          <p className="text-xs text-zinc-300 whitespace-normal leading-relaxed">
+                            {achievement.description}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <p className="text-xs font-medium text-zinc-300 mb-1">
-                      {achievement.event}
-                    </p>
-                    <p className="text-xs text-zinc-400">
-                      {achievement.description}
-                    </p>
                   </div>
-                </AnimatedSection>
-                {index < achievements.length - 1 && (
-                  <div className="mt-3 border-t border-zinc-800/50"></div>
-                )}
-              </div>
+                  <p className="text-xs font-medium text-zinc-300">
+                    {achievement.event}
+                  </p>
+                </div>
+              </AnimatedSection>
             ))}
           </div>
         </CardContent>

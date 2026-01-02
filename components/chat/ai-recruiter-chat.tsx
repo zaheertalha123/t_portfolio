@@ -65,7 +65,7 @@ export function AIRecruiterChat() {
   );
 
   const quickQuestions = [
-    "Is he a good fit for a Next.js role?",
+    "Is Talha a good fit for a Next.js role?",
     "Tell me about his AI integration experience",
   ];
 

@@ -5,10 +5,13 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { getNavItems, getPersonalInfo } from "@/lib/data";
 import { MobileHeader } from "@/components/header/mobile-header";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { MobileChatModal } from "@/components/chat/mobile-chat-modal";
 
 export function PortfolioHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   const navItems = getNavItems();
   const personalInfo = getPersonalInfo();
@@ -284,8 +287,16 @@ export function PortfolioHeader() {
           orderedNavItems={orderedNavItems}
           activeSection={activeSection}
           scrollToSection={scrollToSection}
+          onOpenChat={() => setIsChatOpen(true)}
         />
       </div>
+
+      {/* Mobile Chat Modal Dialog */}
+      <Dialog open={isChatOpen} onOpenChange={setIsChatOpen}>
+        <DialogContent className="h-screen w-screen max-w-none p-0 border-0 bg-transparent lg:hidden [&>button]:hidden">
+          <MobileChatModal onClose={() => setIsChatOpen(false)} />
+        </DialogContent>
+      </Dialog>
     </header>
   );
 }
