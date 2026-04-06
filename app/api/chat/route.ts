@@ -40,7 +40,7 @@ AVOID:
 SOURCE OF TRUTH (JSON):\n${JSON.stringify(portfolioData)}\n`
 
   const result = streamText({
-    model: openai("gpt-4o-mini"),
+    model: openai("gpt-4.1-mini"),
     system: systemPrompt,
     messages: convertToModelMessages(messages),
     temperature: 0.3,

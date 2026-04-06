@@ -67,29 +67,28 @@
       "period": "July 2025 – Present",
       "description": "Built Node.js automation scripts, AI-powered voice agents, and dynamic query generation system for Trinium logistics database.",
       "achievements": [
+        "Implemented voice agents with Pipecat for handling customer queries and support",
         "Developed automation scripts using Puppeteer to streamline business workflows",
         "Built FastAPI endpoints to fetch real-time data directly from Trinium Linked DB",
-        "Implemented voice agents with Pipecat for handling customer queries and support",
         "Designed AI-powered query bot using Vercel AI SDK with tool calling to generate executable Trinium DB queries",
         "Mastered Trinium DB structure to efficiently fetch and process logistics data"
       ]
     },
     {
-      "title": "Full Stack Developer",
+      "title": "AI Developer",
       "company": "Core Edge Solutions",
       "companyUrl": "https://www.coreedgesolution.com/",
       "period": "May 2025 – Present",
-      "description": "Implemented web applications with integrated AI agents using Python and Node.js.",
+      "description": "Implemented AI agents using Pipecat-ai and Daily PSTN with a full stack web application",
       "achievements": [
-        "Built web applications with AI agent integration using Python and Node.js",
+        "Built web applications with AI agent integration using Pipecat-ai and Daily PSTN",
         "Designed RESTful APIs and real-time communication for web-AI backends",
         "Integrated third-party AI services and custom ML models",
-        "Optimized performance through testing, monitoring, and CI/CD pipelines",
-        "Mentored team members on AI integration best practices"
+        "Optimized performance through testing, monitoring, and CI/CD pipelines"
       ]
     },
     {
-      "title": "HTB Meetup Host",
+      "title": "HTB Meetup Ambassador",
       "company": "Hack The Box",
       "companyUrl": "https://www.hackthebox.com/meetups",
       "period": "April 2025 – Present",
@@ -103,7 +102,7 @@
       ]
     },
     {
-      "title": "Course Instructor",
+      "title": "Cyber Security Course Instructor",
       "company": "Hunarmand Punjab",
       "companyUrl": "https://hunarmandpunjab.pk/",
       "period": "Sep 2025 - Oct 2025",
@@ -270,6 +269,33 @@
     },
     {
       "id": 2,
+      "slug": "voice-agent",
+      "title": "Voice Agent",
+      "category": "AI Agent",
+      "shortDescription": "Voice agent for Invoice/Outbound calls",
+      "description": [
+        "A Voice agent for Invoice/Outbound calls. It allows to place calls to customers for defined purpose like SDR and it can also recieve an inbound call from customer and respond to their queries"
+      ],
+      "features": [
+        "Place calls to customers for defined purpose like SDR",
+        "Receive inbound call from customer and respond to their queries",
+        "Store the call transcript in a database",
+        "Store the call recording in a database"
+      ],
+      "technologies": ["Pipecat-ai", "Daily PSTN","Python", "Supabase", "Docker", "Git", "Linux"],
+      "coverImage": "/pipecat.png",
+      "gallery": [
+        { "url": "/voice-agent/voice_agent_01.png" },
+        { "url": "/voice-agent/voice_agent_02.png" },
+        { "url": "/voice-agent/voice_agent_03.png" },
+        { "url": "/voice-agent/voice_agent_04.png" }
+      ],
+      "timeline": "Open Source Project(2026)",
+      "role": "Agentic AI Developer",
+      "githubUrl": "https://github.com/zaheertalha123/voice-agent"
+    },
+    {
+      "id": 3,
       "slug": "darzee-mobile-app",
       "title": "Darzee Mobile App",
       "category": "Mobile App",
@@ -296,7 +322,7 @@
       "githubUrl": ""
     },
     {
-      "id": 3,
+      "id": 4,
       "slug": "pos-system",
       "title": "POS System",
       "category": "Professional Work",
@@ -329,7 +355,7 @@
       "githubUrl": ""
     },
     {
-      "id": 4,
+      "id": 5,
       "slug": "waiter-app",
       "title": "Waiter App",
       "category": "Professional Work",
@@ -360,7 +386,7 @@
       "githubUrl": ""
     },
     {
-      "id": 5,
+      "id": 6,
       "slug": "pos-system-offline",
       "title": "POS System (Offline)",
       "category": "Professional Work",
@@ -388,7 +414,7 @@
       "githubUrl": ""
     },
     {
-      "id": 6,
+      "id": 7,
       "slug": "file-sync-system",
       "title": "File Sync System",
       "category": "C++ Application",
