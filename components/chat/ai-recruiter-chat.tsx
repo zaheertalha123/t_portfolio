@@ -7,8 +7,19 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MessageCircle, MessageCircleDashed } from "lucide-react";
 import TextareaAutosize from "react-textarea-autosize";
-import { useChat } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
+import {
+  usePortfolioAiChat,
+  RateLimitChatBanner,
+} from "@/components/chat/portfolio-ai-chat-shared";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const getMessageText = (message: UIMessage): string => {
   try {
@@ -29,12 +40,17 @@ const getMessageText = (message: UIMessage): string => {
 
 export function AIRecruiterChat() {
   const [input, setInput] = useState("");
+  const [rateLimitModalOpen, setRateLimitModalOpen] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
-  const { messages, sendMessage, status } = useChat({
-    messages: [],
-  });
+  const { messages, sendMessage, status, rateLimited } = usePortfolioAiChat();
 
   const isLoading = status === "submitted" || status === "streaming";
+
+  useEffect(() => {
+    if (rateLimited) {
+      setRateLimitModalOpen(true);
+    }
+  }, [rateLimited]);
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -49,10 +65,10 @@ export function AIRecruiterChat() {
 
   const submitMessage = useCallback(() => {
     const trimmed = input.trim();
-    if (!trimmed || isLoading) return;
+    if (!trimmed || isLoading || rateLimited) return;
     void sendMessage({ text: trimmed });
     setInput("");
-  }, [input, isLoading, sendMessage]);
+  }, [input, isLoading, rateLimited, sendMessage]);
 
   const handleKeyPress = useCallback(
     (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -71,6 +87,30 @@ export function AIRecruiterChat() {
 
   return (
     <Card className="bg-zinc-900/70 border-zinc-800 backdrop-blur-sm rounded-xl lg:h-[calc(100vh-6rem)] min-h-[400px] sm:min-h-[500px]">
+      <Dialog open={rateLimitModalOpen} onOpenChange={setRateLimitModalOpen}>
+        <DialogContent className="sm:max-w-md border-zinc-700 bg-zinc-900 text-zinc-100">
+          <DialogHeader>
+            <DialogTitle className="text-amber-100">
+              Too many requests
+            </DialogTitle>
+            <DialogDescription className="text-zinc-400">
+              This chat allows up to 5 messages every 5 minutes. The input is
+              disabled until the limit resets.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button
+              type="button"
+              variant="secondary"
+              className="bg-zinc-800 text-zinc-100 hover:bg-zinc-700"
+              onClick={() => setRateLimitModalOpen(false)}
+            >
+              OK
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       <CardContent className="p-0 flex flex-col h-full min-h-[400px] sm:min-h-[500px]">
         <div className="flex items-center p-4 sm:p-6">
           <MessageCircle className="w-5 h-5 mr-2 text-cyan-400" />
@@ -152,6 +192,11 @@ export function AIRecruiterChat() {
         </div>
 
         <div className="bg-black/30 pt-3 pb-4 px-3 sm:px-5 flex-shrink-0">
+          {rateLimited && (
+            <div className="mb-3">
+              <RateLimitChatBanner />
+            </div>
+          )}
           <div className="mb-3">
             <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {quickQuestions.map((question, index) => (
@@ -159,6 +204,7 @@ export function AIRecruiterChat() {
                   key={index}
                   variant="ghost"
                   size="sm"
+                  disabled={rateLimited || isLoading}
                   className={`text-xs sm:text-sm bg-zinc-800/50 hover:text-cyan-400 text-cyan-400 border border-zinc-700/50 rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 ${
                     index > 0 ? "hidden sm:inline-flex" : ""
                   }`}
@@ -181,8 +227,13 @@ export function AIRecruiterChat() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyPress}
-              placeholder="Ask about the candidate..."
-              className="flex-1 bg-zinc-800/50 border border-zinc-700 placeholder-zinc-500 rounded-xl text-zinc-300 p-2 sm:p-3 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-colors text-sm sm:text-base"
+              disabled={rateLimited || isLoading}
+              placeholder={
+                rateLimited
+                  ? "Rate limited — try again after a few minutes"
+                  : "Ask about the candidate..."
+              }
+              className="flex-1 bg-zinc-800/50 border border-zinc-700 placeholder-zinc-500 rounded-xl text-zinc-300 p-2 sm:p-3 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-colors text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
               minRows={2}
               maxRows={6}
             />

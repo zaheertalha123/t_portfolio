@@ -6,8 +6,11 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MessageCircle, MessageCircleDashed, ArrowLeft } from "lucide-react";
 import TextareaAutosize from "react-textarea-autosize";
-import { useChat } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
+import {
+  usePortfolioAiChat,
+  RateLimitChatBanner,
+} from "@/components/chat/portfolio-ai-chat-shared";
 
 const getMessageText = (message: UIMessage): string => {
   try {
@@ -33,9 +36,7 @@ interface MobileChatModalProps {
 export function MobileChatModal({ onClose }: MobileChatModalProps) {
   const [input, setInput] = useState("");
   const scrollAreaRef = useRef<HTMLDivElement>(null);
-  const { messages, sendMessage, status } = useChat({
-    messages: [],
-  });
+  const { messages, sendMessage, status, rateLimited } = usePortfolioAiChat();
 
   const isLoading = status === "submitted" || status === "streaming";
 
@@ -52,10 +53,10 @@ export function MobileChatModal({ onClose }: MobileChatModalProps) {
 
   const submitMessage = useCallback(() => {
     const trimmed = input.trim();
-    if (!trimmed || isLoading) return;
+    if (!trimmed || isLoading || rateLimited) return;
     void sendMessage({ text: trimmed });
     setInput("");
-  }, [input, isLoading, sendMessage]);
+  }, [input, isLoading, rateLimited, sendMessage]);
 
   const handleKeyPress = useCallback(
     (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -169,6 +170,11 @@ export function MobileChatModal({ onClose }: MobileChatModalProps) {
 
       {/* Modal Input Area */}
       <div className="bg-zinc-900/90 backdrop-blur-sm border-t border-zinc-800 p-4 pb-8 flex-shrink-0">
+        {rateLimited && (
+          <div className="mb-3">
+            <RateLimitChatBanner />
+          </div>
+        )}
         <div className="mb-3">
           <div className="flex flex-wrap gap-2">
             {quickQuestions.map((question, index) => (
@@ -176,6 +182,7 @@ export function MobileChatModal({ onClose }: MobileChatModalProps) {
                 key={index}
                 variant="ghost"
                 size="sm"
+                disabled={rateLimited || isLoading}
                 className="text-sm bg-zinc-800/50 hover:text-cyan-400 text-cyan-400 border border-zinc-700/50 rounded-xl px-3 py-2"
                 onClick={() => setInput(question)}
               >
@@ -196,8 +203,13 @@ export function MobileChatModal({ onClose }: MobileChatModalProps) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyPress}
-            placeholder="Ask about the candidate..."
-            className="flex-1 bg-zinc-800/50 border border-zinc-700 placeholder-zinc-500 rounded-xl text-zinc-300 p-3 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-colors text-base"
+            disabled={rateLimited || isLoading}
+            placeholder={
+              rateLimited
+                ? "Rate limited — try again after a few minutes"
+                : "Ask about the candidate..."
+            }
+            className="flex-1 bg-zinc-800/50 border border-zinc-700 placeholder-zinc-500 rounded-xl text-zinc-300 p-3 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-colors text-base disabled:opacity-50 disabled:cursor-not-allowed"
             minRows={2}
             maxRows={4}
           />
