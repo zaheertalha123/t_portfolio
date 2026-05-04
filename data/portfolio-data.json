@@ -103,6 +103,34 @@
     },
     {
       "title": "Cyber Security Course Instructor",
+      "company": "SkillBridge Pakistan",
+      "companyUrl": "https://skillbridgepakistan.com/",
+      "period": "2025",
+      "description": "Recorded 24 video lectures on cyber security and penetration testing with updated content, a strong practical focus, and guidance on how to keep growing and apply skills after the course. Independently planned the curriculum, pairing in-depth theory with step-by-step practical implementations for techniques students often find difficult to perform on their own.",
+      "achievements": [
+        "Recorded 24 video lectures on cyber security and penetration testing with refreshed, up-to-date material",
+        "Emphasized hands-on work and included forward-looking insights on continuing to learn and operate in the field after the course",
+        "Owned end-to-end curriculum planning—objectives, sequencing, and how theory maps to labs—for online learners",
+        "Delivered detailed theory followed by step-by-step practical walkthroughs for challenging security and pentesting exercises",
+        "Structured lessons so difficult hands-on steps were broken down clearly while staying aligned to real-world practice"
+      ]
+    },
+    {
+      "title": "Agentic AI Course Instructor",
+      "company": "SkillBridge Pakistan",
+      "companyUrl": "https://skillbridgepakistan.com/",
+      "period": "2025",
+      "description": "Recorded 24 video lectures in a practical-first AI course: what AI is, building intuition with AI-based games, Next.js basics, and an agentic portfolio that presents your work using the Vercel AI SDK. Covered deployment on Vercel plus agent patterns—system prompts, tool calling, context, and related topics—with hands-on work in every major module.",
+      "achievements": [
+        "Recorded 24 lectures on AI foundations—what AI is—and used AI-based games to help students build intuition before deeper builds",
+        "Provided a Next.js fundamentals overview as the base for AI-powered web applications",
+        "Guided students through building an agentic AI portfolio that describes their work using the Vercel AI SDK",
+        "Walked through deploying projects to Vercel from setup through production",
+        "Taught system prompts, tool calling, context handling, and related agent patterns with step-by-step practical exercises throughout the course"
+      ]
+    },
+    {
+      "title": "Cyber Security Course Instructor",
       "company": "Hunarmand Punjab",
       "companyUrl": "https://hunarmandpunjab.pk/",
       "period": "Sep 2025 - Oct 2025",
