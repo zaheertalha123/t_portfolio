@@ -72,8 +72,7 @@ export function RateLimitChatBanner({ className }: RateLimitChatBannerProps) {
       <div className="min-w-0 space-y-0.5">
         <p className="text-sm font-medium text-amber-100">Too many requests</p>
         <p className="text-xs text-amber-200/90 leading-snug">
-          This chat allows up to 5 messages every 5 minutes. Input is paused
-          until the limit resets.
+          Please try again later.
         </p>
       </div>
     </div>

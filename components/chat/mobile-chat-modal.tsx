@@ -206,7 +206,7 @@ export function MobileChatModal({ onClose }: MobileChatModalProps) {
             disabled={rateLimited || isLoading}
             placeholder={
               rateLimited
-                ? "Rate limited — try again after a few minutes"
+                ? "Too many requests — try again later"
                 : "Ask about the candidate..."
             }
             className="flex-1 bg-zinc-800/50 border border-zinc-700 placeholder-zinc-500 rounded-xl text-zinc-300 p-3 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-colors text-base disabled:opacity-50 disabled:cursor-not-allowed"
