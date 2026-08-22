@@ -5,15 +5,15 @@
   },
   "personal": {
     "name": "Muhammad Talha Zaheer",
-    "title": "Agentic AI Developer & Cyber Security Professional",
-    "about": "Future-Focused Computer Scientist | Aspiring Cybersecurity Expert | Innovator in Technology and Digital Defense",
-    "profileImage": "/t_profile.jpeg",
+    "title": "Agentic AI Developer & Cyber Security Instructor",
+    "about": "Computer Scientist | Agentic AI Developer | Cybersecurity | Architecting Secure, Intelligent Agents",
+    "profileImage": "/t_profile.jpg",
     "location": "Lahore, Pakistan",
     "email": "thack3d@gmail.com",
     "phone": "+92 (318) 7768296",
     "workingHours": "Asynchronous-first, with dedicated availability for team sync-ups in any time zone.",
     "availableForWork": true,
-    "badges": ["Agenetic AI Developer", "Node.js Developer", "Django Developer"],
+    "badges": [],
     "social": [
       {
         "platform": "GitHub",
@@ -24,6 +24,11 @@
         "platform": "LinkedIn",
         "url": "https://www.linkedin.com/in/zaheertalha123/",
         "icon": "Linkedin"
+      },
+      {
+        "platform": "Instagram",
+        "url": "https://www.instagram.com/zaheertalha123/",
+        "icon": "Instagram"
       }
     ]
   },
@@ -43,6 +48,14 @@
       "href": "#experience"
     },
     {
+      "label": "Skills",
+      "href": "#skills"
+    },
+    {
+      "label": "Community",
+      "href": "#community"
+    },
+    {
       "label": "Achievements",
       "href": "#achievements"
     },
@@ -51,47 +64,86 @@
       "href": "#education"
     },
     {
-      "label": "Skills",
-      "href": "#skills"
-    },
-    {
       "label": "Projects",
       "href": "#projects"
     }
   ],
   "experience": [
     {
-      "title": "Developer",
-      "company": "Pacifica Trucks LLC",
-      "companyUrl": "https://www.pacificatrucks.com/",
-      "period": "July 2025 – Present",
-      "description": "Built Node.js automation scripts, AI-powered voice agents, and dynamic query generation system for Trinium logistics database.",
+      "title": "Developer (Contract)",
+      "company": "EPGGB Law",
+      "companyUrl": "https://www.epggblaw.com/",
+      "period": "Apr 2026 – Jun 2026",
+      "location": "Los Angeles, CA (Remote)",
+      "description": "Remote contract developer delivering a Clio-integrated Electron desktop application for legal practice data export and client reporting workflows.",
       "achievements": [
-        "Implemented voice agents with Pipecat for handling customer queries and support",
-        "Developed automation scripts using Puppeteer to streamline business workflows",
-        "Built FastAPI endpoints to fetch real-time data directly from Trinium Linked DB",
-        "Designed AI-powered query bot using Vercel AI SDK with tool calling to generate executable Trinium DB queries",
-        "Mastered Trinium DB structure to efficiently fetch and process logistics data"
+        "Built an Electron.js desktop application integrated with the Clio API to fetch, organize, and export legal practice data for client workflows",
+        "Retrieved and structured records by matters, activities, issues, and bills; mapped API responses into clean, analysis-ready datasets",
+        "Generated custom-formatted CSV exports for downstream data processing and reporting"
       ]
     },
     {
       "title": "AI Developer",
       "company": "Core Edge Solutions",
       "companyUrl": "https://www.coreedgesolution.com/",
-      "period": "May 2025 – Present",
-      "description": "Implemented AI agents using Pipecat-ai and Daily PSTN with a full stack web application",
+      "period": "May 2025 – Apr 2026",
+      "location": "Gulberg, Lahore, Pakistan",
+      "description": "Owned end-to-end delivery of production voice-AI products—from inbound support and outbound SDR to truck dispatch—coordinating STT/LLM/TTS integrations, FastAPI backends, and React dashboards from design through release.",
       "achievements": [
-        "Built web applications with AI agent integration using Pipecat-ai and Daily PSTN",
-        "Designed RESTful APIs and real-time communication for web-AI backends",
-        "Integrated third-party AI services and custom ML models",
-        "Optimized performance through testing, monitoring, and CI/CD pipelines"
+        "Delivered production voice-AI products (inbound support, outbound SDR, truck dispatch) by coordinating STT/LLM/TTS integrations, backend APIs, and React dashboards from design through release",
+        "Translated TMS domain requirements into agent prompts, tool specifications, and FastAPI endpoints; aligned engineering with logistics ops needs including call transfer, email, and real-time Trinium lookups",
+        "Managed release pipelines with GitHub Actions on Railway—production, staging, and per-PR preview environments—reducing deployment friction and enabling safer iteration",
+        "Tracked delivery quality via per-call cost, recordings, and transcripts for ops review; coordinated Puppeteer/TMS automations that fed live data into agent workflows",
+        "Used Linear and Monday.com-style task tracking to prioritize features, surface blockers, and keep multi-component agent platforms on schedule"
       ]
     },
     {
-      "title": "HTB Meetup Ambassador",
+      "title": "Cyber Security Course Instructor",
+      "company": "Hunarmand Punjab",
+      "companyUrl": "https://hunarmandpunjab.pk/",
+      "period": "Jul 2025 – Oct 2025",
+      "location": "Punjab, Pakistan",
+      "description": "Cyber Security Course Instructor for Hunarmand Punjab’s government skills initiative, owning curriculum design and video-based delivery for Cybersecurity and Penetration Testing tracks.",
+      "achievements": [
+        "Designed two full courses—Cybersecurity and Penetration Testing—including complete outlines, module sequencing, and learning objectives",
+        "Recorded 24 video lectures for each course (48 total), delivering practical, hands-on instruction for a government skills initiative",
+        "Created quizzes, assignments, final projects, and exams to assess student progress and applied security competency"
+      ]
+    },
+    {
+      "title": "Cybersecurity Intern",
+      "company": "Professional Freelancing Training Program",
+      "companyUrl": "https://pftpedu.org/",
+      "period": "Nov 2024 – Apr 2025",
+      "location": "Lahore, Pakistan",
+      "description": "Supported security-focused project work through structured testing, documentation of findings, and remediation recommendations (web app testing, network analysis, WAF/firewall configuration).",
+      "achievements": [
+        "Performed structured security testing and documented findings with actionable remediation recommendations",
+        "Conducted web application testing, network analysis, and WAF/firewall configuration work",
+        "Contributed to security-focused project deliverables within the PFTP training program"
+      ]
+    },
+    {
+      "title": "Freelance Developer",
+      "company": "Freelance",
+      "period": "Sep 2023 – Nov 2024",
+      "location": "Lahore, Pakistan",
+      "description": "Delivered freelance software projects for restaurant clients—offline POS systems, waiter mobile apps, and invoice/billing desktop applications built with Node.js and Electron.",
+      "achievements": [
+        "Built offline POS systems, waiter mobile apps, and invoice/billing desktop applications with Node.js and Electron for restaurant clients",
+        "Owned requirements gathering, database design, implementation, and client delivery across hybrid engagements from scoping through deployment",
+        "Contributed to open projects involving database architecture design and cybersecurity workflow development"
+      ]
+    }
+  ],
+  "communityWork": [
+    {
+      "title": "Meetup Host and Ambassador",
       "company": "Hack The Box",
       "companyUrl": "https://www.hackthebox.com/meetups",
       "period": "April 2025 – Present",
+      "status": "current",
+      "location": "Lahore, Pakistan",
       "description": "Host online and on-campus cyber security events at various universities, teaching students about cyber security concepts and practices, and providing resources and opportunities to enhance their skills.",
       "achievements": [
         "Organized cyber security workshops and events across multiple universities",
@@ -102,61 +154,16 @@
       ]
     },
     {
-      "title": "Cyber Security Course Instructor",
-      "company": "SkillBridge Pakistan",
-      "companyUrl": "https://skillbridgepakistan.com/",
-      "period": "2025",
-      "description": "Recorded 24 video lectures on cyber security and penetration testing with updated content, a strong practical focus, and guidance on how to keep growing and apply skills after the course. Independently planned the curriculum, pairing in-depth theory with step-by-step practical implementations for techniques students often find difficult to perform on their own.",
+      "title": "Peer Tutor",
+      "company": "University of Management and Technology (UMT)",
+      "companyUrl": "https://www.umt.edu.pk/",
+      "period": "Sep 2024 – Feb 2025",
+      "location": "Lahore, Pakistan",
+      "description": "Mentored undergraduate students in low-level programming, x86 assembly, and CPU architecture—bridging high-level code with hardware operations through individual and group tutoring sessions.",
       "achievements": [
-        "Recorded 24 video lectures on cyber security and penetration testing with refreshed, up-to-date material",
-        "Emphasized hands-on work and included forward-looking insights on continuing to learn and operate in the field after the course",
-        "Owned end-to-end curriculum planning—objectives, sequencing, and how theory maps to labs—for online learners",
-        "Delivered detailed theory followed by step-by-step practical walkthroughs for challenging security and pentesting exercises",
-        "Structured lessons so difficult hands-on steps were broken down clearly while staying aligned to real-world practice"
-      ]
-    },
-    {
-      "title": "Agentic AI Course Instructor",
-      "company": "SkillBridge Pakistan",
-      "companyUrl": "https://skillbridgepakistan.com/",
-      "period": "2025",
-      "description": "Recorded 24 video lectures in a practical-first AI course: what AI is, building intuition with AI-based games, Next.js basics, and an agentic portfolio that presents your work using the Vercel AI SDK. Covered deployment on Vercel plus agent patterns—system prompts, tool calling, context, and related topics—with hands-on work in every major module.",
-      "achievements": [
-        "Recorded 24 lectures on AI foundations—what AI is—and used AI-based games to help students build intuition before deeper builds",
-        "Provided a Next.js fundamentals overview as the base for AI-powered web applications",
-        "Guided students through building an agentic AI portfolio that describes their work using the Vercel AI SDK",
-        "Walked through deploying projects to Vercel from setup through production",
-        "Taught system prompts, tool calling, context handling, and related agent patterns with step-by-step practical exercises throughout the course"
-      ]
-    },
-    {
-      "title": "Cyber Security Course Instructor",
-      "company": "Hunarmand Punjab",
-      "companyUrl": "https://hunarmandpunjab.pk/",
-      "period": "Sep 2025 - Oct 2025",
-      "description": "Developed and recorded comprehensive cyber security and penetration testing courses with 24 lectures featuring 80% practical hands-on content.",
-      "achievements": [
-        "Recorded 24 lectures covering cyber security and penetration testing concepts",
-        "Designed courses with 80% practical content to provide hands-on knowledge",
-        "Created interactive learning objectives and tasks within lectures for online students",
-        "Structured curriculum to enable self-paced learning while maintaining engagement",
-        "Delivered practical pentesting and security labs for enrolled students"
-      ]
-    },
-    {
-      "title": "Cyber Security Intern",
-      "company": "Professional Freelancing Training Program - PFTP",
-      "companyUrl": "https://pftpedu.org/",
-      "period": "Nov 2024 - Apr 2025",
-      "description": "Gained practical hands-on experience in network security, vulnerability exploitation, and defense mechanisms including firewall configuration and penetration testing.",
-      "achievements": [
-        "Configured pfSense firewall with IDS/IPS for network threat detection and prevention",
-        "Deployed Web Application Firewall (WAF) on vulnerable sites for application-level protection",
-        "Set up and configured Loki scanner for malware detection and analysis",
-        "Conducted DoS attack simulations using hping3, LOIC, and HOIC tools",
-        "Exploited shadow file vulnerabilities and demonstrated privilege escalation techniques",
-        "Performed network traffic analysis and packet inspection using Wireshark",
-        "Executed Nmap scanning and vulnerability exploitation including EternalBlue and macro-based attacks on Windows systems"
+        "Mentored undergraduates in low-level programming concepts, x86 assembly, and CPU architecture",
+        "Guided students through complex lab debugging and instruction set architectures (ISA) in individual and group sessions",
+        "Helped learners connect high-level code with underlying hardware operations"
       ]
     }
   ],
@@ -164,69 +171,88 @@
     {
       "degree": "BS-CS",
       "institution": "University of Management and Technology, Lahore",
+      "institutionUrl": "https://www.umt.edu.pk/",
       "year": "Nov 2021 - July 2025"
     },
     {
       "degree": "Digital Forensic & Cyber Security",
       "institution": "NAVTTC - National Vocational & Technical Training Commission",
+      "institutionUrl": "https://www.umt.edu.pk/",
       "year": "April 2025 - June 2025"
     },
     {
       "degree": "Cyber Security Diploma",
       "institution": "Professional Freelancing Training Program - PFTP",
+      "institutionUrl": "https://pftpedu.org/",
       "year": "June 2024 - May 2025"
     },
     {
       "degree": "Intermediate ICS",
       "institution": "Superior College Hajipura Sialkot",
+      "institutionUrl": "https://www.superiorcolleges.edu.pk/sialkot/",
       "year": "2021"
     }
   ],
   "technicalSkills": {
+    "ai": [
+      "Pipecat",
+      "Vercel AI SDK",
+      "OpenAI",
+      "LangGraph",
+      "Voice Agents (STT / LLM / TTS)",
+      "Tool Calling & System Prompts",
+      "Retell AI"
+    ],
     "languagesFrameworks": [
       "Python",
+      "Node.js",
+      "Next.js",
+      "React",
+      "Expo",
+      "FastAPI",
+      "Electron.js",
+      "Django",
       "C/C++",
-      "Node",
-      "Django Development",
-      "Android Development",
-      "Node JS",
-      "Metasploit Framework",
+      "Android"
+    ],
+    "cybersecurity": [
+      "Web Application Testing",
+      "Vulnerability Assessment",
+      "Network Analysis",
+      "Firewall / WAF Configuration",
+      "IPS / IDS",
+      "Incident Response",
+      "OWASP Juice Shop",
+      "Metasploit",
       "DVWA"
     ],
-    "cloudSecurity": [
-      "Amazon AWS",
-      "Firewall configuration",
-      "IPS/IDS configuration and management"
-    ],
     "styling": [
-      "Tailwind",
+      "Tailwind CSS",
+      "shadcn/ui",
       "Bootstrap",
       "CSS"
     ],
     "tools": [
-      "Git/GitHub",
-      "Git Actions for CI/CD",
+      "Git / GitHub",
+      "GitHub Actions (CI/CD)",
       "Docker",
-      "Deployments (Vercel, Digital Ocean, Runpod, Railway)"
-    ],
-    "ai": [
-      "OpenAI",
-      "Langgraph",
-      "Vercel AI SDK",
-      "Retell AI (Voice agents)",
-      "AI Calling Agents",
-      "Pipecat"
+      "Vercel",
+      "Railway",
+      "AWS",
+      "DigitalOcean",
+      "RunPod",
+      "Puppeteer"
     ],
     "productivity": [
       "Cursor",
-      "Draw.io",
-      "Loom",
-      "Slack",
-      "Jira",
-      "Google Workspace",
       "VS Code",
       "Postman",
-      "Cherrytree"
+      "Linear",
+      "Jira",
+      "Slack",
+      "Loom",
+      "Draw.io",
+      "Google Workspace"
     ]
   },
   "achievements": [
@@ -324,6 +350,73 @@
     },
     {
       "id": 3,
+      "slug": "astro-pos",
+      "title": "AstroPOS",
+      "category": "Restaurant Management System",
+      "shortDescription": "Complete restaurant management system with offline sync, multi-kitchen printing, and admin controls.",
+      "description": [
+        "Built a complete restaurant management system with PIN login, multi-kitchen setup, menu items, deals, custom shift tracking, and per-item sales reporting.",
+        "Supports multiple payment accounts, on-account customer billing, auto-saved customer details, delivery charges, and discounts via a full admin panel.",
+        "Works offline and online with interval-based sync; routes orders to multiple printers with separate customer and kitchen receipts; includes an on-screen keyboard and auto-update support."
+      ],
+      "features": [
+        "PIN login and multi-kitchen setup",
+        "Menu items, deals, custom shift tracking, and per-item sales reporting",
+        "Multiple payment accounts and on-account customer billing",
+        "Auto-saved customer details, delivery charges, and discounts",
+        "Full admin panel for restaurant operations",
+        "Offline and online modes with interval-based sync",
+        "Multi-printer routing with separate customer and kitchen receipts",
+        "On-screen keyboard and auto-update support"
+      ],
+      "technologies": ["Electron", "Vite", "React", "Supabase"],
+      "coverImage": "/electron.png",
+      "gallery": [
+        { "url": "/astropos/astropos_01.png" },
+        { "url": "/astropos/astropos_02.png" },
+        { "url": "/astropos/astropos_03.png" },
+        { "url": "/astropos/astropos_04.png" },
+        { "url": "/astropos/astropos_05.png" },
+        { "url": "/astropos/astropos_06.png" },
+        { "url": "/astropos/astropos_07.png" }
+      ],
+      "timeline": "Personal Project (2024-2025)",
+      "role": "Full-Stack Developer",
+      "githubUrl": ""
+    },
+    {
+      "id": 9,
+      "slug": "cereburum-sports",
+      "title": "Cereburum Sports",
+      "category": "Website",
+      "shortDescription": "Marketing website for premium sports barrier netting and facility equipment across Pakistan.",
+      "description": [
+        "Designed and built the Cereburum Sports website to showcase premium barrier netting and sports equipment for cricket grounds, football fields, and custom facilities.",
+        "Highlights product lines—cricket netting, volleyball nets, football goal nets, and custom solutions—plus trust metrics, installation portfolio, and direct WhatsApp inquiry flows for academies and clubs."
+      ],
+      "features": [
+        "Product showcase for cricket, volleyball, football, and custom netting",
+        "Trust and capability highlights (projects completed, experience, facilities served)",
+        "Portfolio of completed sports facility installations",
+        "Direct WhatsApp / inquiry CTA for client outreach",
+        "Responsive marketing experience optimized for mobile and desktop"
+      ],
+      "technologies": ["Next.js", "React", "Tailwind CSS"],
+      "coverImage": "nextjs.png",
+      "gallery": [
+        { "url": "/cs_ports/cssports_01.png" },
+        { "url": "/cs_ports/cssports_02.png" },
+        { "url": "/cs_ports/cssports_03.png" },
+        { "url": "/cs_ports/cssports_04.png" },
+        { "url": "/cs_ports/cssports_05.png" }
+      ],
+      "timeline": "Professional Work (2025)",
+      "role": "Full-Stack Developer",
+      "liveUrl": "https://cereburumsports.site/",
+      "githubUrl": ""
+    },
+    {
+      "id": 4,
       "slug": "darzee-mobile-app",
       "title": "Darzee Mobile App",
       "category": "Mobile App",
@@ -350,7 +443,7 @@
       "githubUrl": ""
     },
     {
-      "id": 4,
+      "id": 5,
       "slug": "pos-system",
       "title": "POS System",
       "category": "Professional Work",
@@ -383,7 +476,7 @@
       "githubUrl": ""
     },
     {
-      "id": 5,
+      "id": 6,
       "slug": "waiter-app",
       "title": "Waiter App",
       "category": "Professional Work",
@@ -414,7 +507,7 @@
       "githubUrl": ""
     },
     {
-      "id": 6,
+      "id": 7,
       "slug": "pos-system-offline",
       "title": "POS System (Offline)",
       "category": "Professional Work",
@@ -442,7 +535,7 @@
       "githubUrl": ""
     },
     {
-      "id": 7,
+      "id": 8,
       "slug": "file-sync-system",
       "title": "File Sync System",
       "category": "C++ Application",
