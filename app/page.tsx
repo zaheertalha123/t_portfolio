@@ -4,6 +4,7 @@ import { FloatingAIButton } from "@/components/chat/floating-ai-button";
 import { AnimatedSection } from "@/components/layout/animated-section";
 import { ProfileSection } from "@/components/sections/ProfileSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
+import { CommunityWorkSection } from "@/components/sections/CommunityWorkSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { AchievementsSection } from "@/components/sections/AchievementsSection";
 import { EducationSection } from "@/components/sections/EducationSection";
@@ -14,6 +15,7 @@ import {
   getExperienceInfo,
   getAchievementsInfo,
   getTechnicalSkillsInfo,
+  getCommunityWorkInfo,
 } from "@/lib/data";
 
 export default function Home() {
@@ -21,12 +23,13 @@ export default function Home() {
   const experienceInfo = getExperienceInfo();
   const achievementsInfo = getAchievementsInfo();
   const technicalSkills = getTechnicalSkillsInfo();
+  const communityWork = getCommunityWorkInfo();
 
   return (
     <main className="min-h-screen lg:h-screen lg:overflow-hidden bg-black text-white">
       <PortfolioHeader />
 
-      <div className="relative container px-2 sm:px-4 pt-24 lg:pt-20 lg:grid lg:grid-cols-3 lg:gap-6">
+      <div className="relative container px-2 sm:px-4 pt-20 sm:pt-24 lg:pt-20 lg:grid lg:grid-cols-3 lg:gap-6 lg:items-start">
         <ProfileSection />
 
         <div
@@ -41,8 +44,9 @@ export default function Home() {
             <AIRecruiterChat />
           </AnimatedSection>
 
-          <SkillsSection technicalSkills={technicalSkills} />
           <ExperienceSection experience={experienceInfo} />
+          <SkillsSection technicalSkills={technicalSkills} />
+          <CommunityWorkSection communityWork={communityWork} />
           <AchievementsSection achievements={achievementsInfo} />
           <EducationSection />
           <ProjectsSection projects={projects} />

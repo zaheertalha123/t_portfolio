@@ -49,6 +49,11 @@ export function getCredentialsInfo() {
   return (data as any).credentials || {}
 }
 
+// Helper function to get community work information
+export function getCommunityWorkInfo() {
+  return (data as any).communityWork || []
+}
+
 // Helper function to get technical skills information
 export function getTechnicalSkillsInfo() {
   return data.technicalSkills

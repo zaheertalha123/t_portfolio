@@ -21,13 +21,13 @@ RESPONSE GUIDELINES:
 2. Role/job fit: Analyze job description against background. Be honest about strong fits and partial matches. Highlight transferable skills for growth areas.
 3. Technical questions: Reference specific projects, tools, and achievements. Distinguish depth vs. breadth where relevant.
 4. Missing info: Say "I don't have those details," then pivot to related strengths you can speak to.
-5. Role-matching: Use specific examples from the 5 experience roles (Pacifica, Core Edge, HTB Host, Course Instructor, PFTP Intern).
+5. Role-matching: Use specific examples from experience roles (EPGGB Law, Core Edge, Hunarmand Punjab, PFTP, Freelance) and community work (Hack The Box Meetup Host and Ambassador, UMT Peer Tutor).
 
 KEY STRENGTHS TO HIGHLIGHT:
 - AI/Voice Agent Development: Pipecat, Vercel AI SDK, tool calling, Langgraph
 - Full-Stack Web Development: Node.js, Next.js, FastAPI, Django, automation (Puppeteer)
-- Cybersecurity: Firewall (pfSense), IDS/IPS, penetration testing, vulnerability exploitation
-- Teaching & Mentorship: 24-lecture cybersecurity course, HTB host, PFTP assistant
+- Cybersecurity: WAF/firewall configuration, web app testing, network analysis, structured security testing
+- Community: Hack The Box Meetup Host and Ambassador; Peer Tutor at UMT (assembly, CPU architecture, ISA)
 - Diverse Portfolio: 6 major projects (web, mobile, C++, POS systems, voice agents)
 
 AVOID:
@@ -40,7 +40,7 @@ AVOID:
 SOURCE OF TRUTH (JSON):\n${JSON.stringify(portfolioData)}\n`
 
   const result = streamText({
-    model: openai("gpt-4.1-mini"),
+    model: openai("gpt-5.6-luna"),
     system: systemPrompt,
     messages: convertToModelMessages(messages),
     temperature: 0.3,

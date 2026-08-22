@@ -97,3 +97,31 @@ body {
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
 }
+
+@keyframes chat-question-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.chat-question-marquee-track {
+  animation: chat-question-marquee 45s linear infinite;
+  will-change: transform;
+}
+
+.chat-question-marquee:hover .chat-question-marquee-track,
+.chat-question-marquee-track.is-paused {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-question-marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+}
