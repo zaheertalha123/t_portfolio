@@ -25,7 +25,7 @@ export function FloatingAIButton() {
       </div>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="h-screen w-screen max-w-none p-0 border-0 bg-transparent lg:hidden [&>button]:hidden">
+        <DialogContent className="left-0 top-0 translate-x-0 translate-y-0 h-[100dvh] w-full max-w-full overflow-hidden p-0 border-0 bg-black gap-0 rounded-none lg:hidden [&>button]:hidden">
           <MobileChatModal onClose={() => setIsOpen(false)} />
         </DialogContent>
       </Dialog>

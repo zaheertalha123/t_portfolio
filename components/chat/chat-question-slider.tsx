@@ -36,7 +36,7 @@ export function ChatQuestionSlider({
   return (
     <div
       className={cn(
-        "chat-question-marquee relative overflow-hidden rounded-xl border border-zinc-700/50 bg-zinc-800/50",
+        "chat-question-marquee relative w-full min-w-0 max-w-full overflow-hidden rounded-xl border border-zinc-700/50 bg-zinc-800/50",
         "[mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]",
         className
       )}

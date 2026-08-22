@@ -91,9 +91,9 @@ export function MobileChatModal({ onClose }: MobileChatModalProps) {
   }, [isLoading, rateLimited, sendMessage]);
 
   return (
-    <div className="flex flex-col h-screen bg-black text-white">
+    <div className="flex flex-col h-[100dvh] w-full max-w-full min-w-0 overflow-x-hidden bg-black text-white">
       {/* Mobile Modal Header */}
-      <div className="flex items-center p-4 border-b border-zinc-800 bg-zinc-900/90 backdrop-blur-sm">
+      <div className="flex items-center p-3 sm:p-4 border-b border-zinc-800 bg-zinc-900/90 backdrop-blur-sm shrink-0">
         <Button
           variant="ghost"
           size="sm"
@@ -186,13 +186,13 @@ export function MobileChatModal({ onClose }: MobileChatModalProps) {
       </div>
 
       {/* Modal Input Area */}
-      <div className="bg-zinc-900/90 backdrop-blur-sm border-t border-zinc-800 p-4 pb-8 flex-shrink-0">
+      <div className="bg-zinc-900/90 backdrop-blur-sm border-t border-zinc-800 p-3 sm:p-4 pb-[max(1rem,env(safe-area-inset-bottom))] flex-shrink-0 min-w-0 w-full overflow-x-hidden">
         {rateLimited && (
-          <div className="mb-3">
+          <div className="mb-3 min-w-0">
             <RateLimitChatBanner />
           </div>
         )}
-        <div className="mb-3">
+        <div className="mb-3 min-w-0 w-full overflow-hidden">
           <ChatQuestionSlider
             disabled={rateLimited || isLoading}
             onQuestionSelect={handleSuggestedQuestion}
@@ -204,7 +204,7 @@ export function MobileChatModal({ onClose }: MobileChatModalProps) {
             e.preventDefault();
             submitMessage();
           }}
-          className="flex space-x-2 rounded-xl"
+          className="min-w-0 w-full"
         >
           <TextareaAutosize
             value={input}
@@ -216,7 +216,7 @@ export function MobileChatModal({ onClose }: MobileChatModalProps) {
                 ? "Too many requests — try again later"
                 : "Ask about the candidate..."
             }
-            className="flex-1 bg-zinc-800/50 border border-zinc-700 placeholder-zinc-500 rounded-xl text-zinc-300 p-3 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-colors text-base disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full min-w-0 box-border bg-zinc-800/50 border border-zinc-700 placeholder-zinc-500 rounded-xl text-zinc-300 p-3 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-colors text-base disabled:opacity-50 disabled:cursor-not-allowed"
             minRows={2}
             maxRows={4}
           />
