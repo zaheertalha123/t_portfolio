@@ -31,7 +31,7 @@ export function ExperienceSection({
             <h3 className="text-lg font-medium">Experience</h3>
           </div>
 
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-2 sm:space-y-3">
             {experience.map((item, index) => (
               <div key={index}>
                 <AnimatedSection animation="fade-up" delay={100 * (index + 1)}>
@@ -46,9 +46,6 @@ export function ExperienceSection({
                     achievements={item.achievements}
                   />
                 </AnimatedSection>
-                {index < experience.length - 1 && (
-                  <div className="mt-6 sm:mt-8 border-t border-zinc-800/50"></div>
-                )}
               </div>
             ))}
           </div>

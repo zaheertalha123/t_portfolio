@@ -42,13 +42,13 @@ export function ProjectCard({
         className="block h-full w-full text-left cursor-pointer focus:outline-none"
       >
       <TiltCard className="h-full">
-      <Card className="bg-zinc-800/50 border-zinc-700 rounded-xl overflow-hidden group hover:border-cyan-500/50 hover-lift transition-all h-full">
+      <Card className="project-card bg-zinc-800/50 border-zinc-700 rounded-xl overflow-hidden group hover:border-cyan-500/50 h-full">
         <div className="relative h-40 sm:h-48 w-full overflow-hidden">
           <Image
             src={image || "/placeholder.svg"}
             alt={title}
             fill
-            className="object-contain transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+            className="project-card-image object-contain cursor-pointer"
             onClick={handleImageClick}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>

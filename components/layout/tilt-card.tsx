@@ -24,8 +24,8 @@ export function TiltCard({ children, className }: TiltCardProps) {
     const rect = el.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width;
     const y = (e.clientY - rect.top) / rect.height;
-    const rotateY = (x - 0.5) * 10;
-    const rotateX = (0.5 - y) * 10;
+    const rotateY = (x - 0.5) * 7;
+    const rotateX = (0.5 - y) * 7;
     el.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   };
 
@@ -35,7 +35,7 @@ export function TiltCard({ children, className }: TiltCardProps) {
       onPointerMove={onMove}
       onPointerLeave={reset}
       className={cn(
-        "will-change-transform transition-transform duration-150 ease-out",
+        "tilt-card will-change-transform",
         className
       )}
     >

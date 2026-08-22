@@ -4,10 +4,25 @@ import { useState, useEffect, useMemo } from "react";
 import { AnimatedSection } from "@/components/layout/animated-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { GlobeIcon, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+  CircleDot,
+  Code2,
+  GlobeIcon,
+  Layers3,
+  Maximize2,
+} from "lucide-react";
 import { ProjectCard } from "@/components/projects/project-card";
+import { ImageModal } from "@/components/ui/image-modal";
 import Image from "next/image";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { getProjectBySlug } from "@/lib/data";
 import type { Project } from "@/lib/data";
 
@@ -16,6 +31,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const selectedProject = selectedSlug ? getProjectBySlug(selectedSlug) : null;
   const [imageIdx, setImageIdx] = useState(0);
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   const images = useMemo(() => {
     if (!selectedProject) return [] as string[];
@@ -28,7 +44,10 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
   }, [selectedProject]);
 
   useEffect(() => {
-    if (open) setImageIdx(0);
+    if (open) {
+      setImageIdx(0);
+      setIsImageViewerOpen(false);
+    }
   }, [open, selectedSlug]);
 
   return (
@@ -64,151 +83,171 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
           </div>
         </CardContent>
       </Card>
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-zinc-950 border-zinc-800 rounded-xl">
+      <Dialog
+        open={open}
+        onOpenChange={(nextOpen) => {
+          setOpen(nextOpen);
+          if (!nextOpen) setIsImageViewerOpen(false);
+        }}
+      >
+        <DialogContent className="project-modal max-h-[88dvh] max-w-5xl overflow-y-auto overflow-x-hidden border-cyan-400/15 bg-zinc-950 p-0 shadow-2xl shadow-cyan-950/40 sm:rounded-2xl">
           {selectedProject && (
-            <div className="space-y-6 p-2 pt-0">
-
-              {/* Header */}
-              <div className="space-y-2">
-                <div className="text-sm text-cyan-400">
-                  {selectedProject.category}
-                </div>
-                <h2 className="text-2xl font-semibold">
-                  {selectedProject.title}
-                </h2>
-                <p className="text-zinc-400">
-                  {selectedProject.shortDescription}
-                </p>
-              </div>
-
-              {/* Image Slider */}
-              {images.length > 0 && (
-                <div className="space-y-4">
-                  <div className="relative w-full aspect-video bg-zinc-800/50 rounded-xl overflow-hidden">
+            <div className="relative">
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.12),transparent_70%)]" />
+              <div className="relative grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+                {images.length > 0 && (
+                  <div className="relative flex min-h-[17rem] items-center bg-zinc-900/70 p-4 sm:min-h-[22rem] sm:p-6 lg:min-h-full lg:p-8">
+                    <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(34,211,238,0.08),transparent_45%,rgba(59,130,246,0.08))]" />
+                    <div
+                      className="group/image relative aspect-video w-full cursor-zoom-in overflow-hidden rounded-xl border border-white/10 bg-black/30 shadow-2xl shadow-black/40"
+                      onClick={() => setIsImageViewerOpen(true)}
+                    >
                     <Image
                       src={images[imageIdx] || "/placeholder.svg"}
                       alt={selectedProject.title}
                       fill
-                      className="object-contain"
+                        className="object-contain p-2 transition-transform duration-500 group-hover/image:scale-[1.025]"
                     />
-                  </div>
-
-                  {/* Image Navigation */}
-                  {images.length > 1 && (
-                    <div className="flex items-center justify-center gap-3">
+                      <div className="pointer-events-none absolute inset-0 bg-cyan-400/0 transition-colors duration-300 group-hover/image:bg-cyan-400/5" />
                       <Button
-                        size="icon"
+                        type="button"
+                        size="sm"
                         variant="outline"
-                        className="h-9 w-9 rounded-full"
-                        onClick={() =>
-                          setImageIdx((i) =>
-                            i === 0 ? images.length - 1 : i - 1
-                          )
-                        }
+                        aria-label="Enlarge image"
+                        className="absolute right-3 top-3 h-8 rounded-lg border-white/15 bg-zinc-950/75 px-2.5 text-xs text-white opacity-0 backdrop-blur transition-all duration-200 hover:border-cyan-400/60 hover:bg-cyan-400/10 group-hover/image:opacity-100 focus:opacity-100"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          setIsImageViewerOpen(true);
+                        }}
                       >
-                        <ChevronLeft className="h-4 w-4" />
-                      </Button>
-                      <span className="text-xs text-zinc-400 min-w-[60px] text-center">
-                        {imageIdx + 1} of {images.length}
-                      </span>
-                      <Button
-                        size="icon"
-                        variant="outline"
-                        className="h-9 w-9 rounded-full"
-                        onClick={() =>
-                          setImageIdx((i) =>
-                            i === images.length - 1 ? 0 : i + 1
-                          )
-                        }
-                      >
-                        <ChevronRight className="h-4 w-4" />
+                        <Maximize2 className="h-3.5 w-3.5" />
+                        Enlarge
                       </Button>
                     </div>
-                  )}
-                </div>
-              )}
+                    {images.length > 1 && (
+                      <div className="absolute inset-x-7 bottom-8 flex items-center justify-between sm:inset-x-10 sm:bottom-10">
+                        <Button
+                          size="icon"
+                          variant="outline"
+                          aria-label="Previous project image"
+                          className="h-9 w-9 rounded-full border-white/15 bg-zinc-950/70 backdrop-blur hover:border-cyan-400/60 hover:bg-cyan-400/10"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            setImageIdx((i) => (i === 0 ? images.length - 1 : i - 1));
+                          }}
+                        >
+                          <ChevronLeft className="h-4 w-4" />
+                        </Button>
+                        <span className="rounded-full border border-white/10 bg-zinc-950/70 px-3 py-1 text-xs text-zinc-300 backdrop-blur">
+                          {String(imageIdx + 1).padStart(2, "0")} <span className="text-zinc-600">/</span> {String(images.length).padStart(2, "0")}
+                        </span>
+                        <Button
+                          size="icon"
+                          variant="outline"
+                          aria-label="Next project image"
+                          className="h-9 w-9 rounded-full border-white/15 bg-zinc-950/70 backdrop-blur hover:border-cyan-400/60 hover:bg-cyan-400/10"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            setImageIdx((i) => (i === images.length - 1 ? 0 : i + 1));
+                          }}
+                        >
+                          <ChevronRight className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                )}
 
-              {/* Description */}
-              {selectedProject.description &&
-                selectedProject.description.length > 0 && (
-                  <div className="space-y-3 text-sm text-zinc-300">
+                <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+                  <div className="mb-4 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-cyan-300">
+                    <CircleDot className="h-3.5 w-3.5" />
+                    {selectedProject.category}
+                  </div>
+                  <DialogTitle className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                    {selectedProject.title}
+                  </DialogTitle>
+                  <DialogDescription className="mt-4 max-w-lg text-base leading-relaxed text-zinc-400">
+                    {selectedProject.shortDescription}
+                  </DialogDescription>
+                  <div className="mt-7 flex flex-wrap gap-3">
+                    {(selectedProject as { liveUrl?: string }).liveUrl && (
+                      <Button asChild className="rounded-xl bg-cyan-400 px-4 text-zinc-950 hover:bg-cyan-300">
+                        <a href={(selectedProject as { liveUrl?: string }).liveUrl} target="_blank" rel="noopener noreferrer">
+                          Visit site <ArrowUpRight className="h-4 w-4" />
+                        </a>
+                      </Button>
+                    )}
+                    <Button
+                      asChild={!!selectedProject.githubUrl}
+                      variant="outline"
+                      className="rounded-xl border-zinc-700 bg-zinc-900/50 px-4 hover:border-cyan-400/50 hover:bg-cyan-400/10"
+                      disabled={!selectedProject.githubUrl}
+                    >
+                      {selectedProject.githubUrl ? (
+                        <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer">
+                          <Code2 className="h-4 w-4" /> View code
+                        </a>
+                      ) : (
+                        <span>Code on request</span>
+                      )}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid gap-8 border-t border-white/10 p-6 sm:p-8 lg:grid-cols-[1.15fr_0.85fr] lg:p-10">
+                {selectedProject.description && selectedProject.description.length > 0 && (
+                  <section className="space-y-3 text-sm leading-relaxed text-zinc-300">
+                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500">Overview</p>
                     {selectedProject.description.map((paragraph, idx) => (
                       <p key={idx}>{paragraph}</p>
                     ))}
-                  </div>
+                  </section>
                 )}
 
-              {/* Features */}
-              {(selectedProject as any).features && (selectedProject as any).features.length > 0 && (
-                <div className="space-y-2">
-                  <h3 className="font-semibold text-zinc-300">Features</h3>
-                  <ul className="space-y-1 text-sm text-zinc-400">
-                    {(selectedProject as any).features.map((feature: string, idx: number) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <span className="text-cyan-400 text-lg leading-none">•</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Technologies */}
-              {(selectedProject as any).technologies && (selectedProject as any).technologies.length > 0 && (
-                <div className="space-y-2">
-                  <h3 className="font-semibold text-zinc-300">Technologies</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {(selectedProject as any).technologies.map((tech: string, idx: number) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-zinc-800 text-zinc-300 text-xs rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* CTA Button */}
-              <div className="flex gap-2 pt-4 flex-wrap">
-                {(selectedProject as { liveUrl?: string }).liveUrl && (
-                  <Button
-                    asChild
-                    size="sm"
-                    variant="outline"
-                    className="border-cyan-400/30 rounded-xl"
-                  >
-                    <a
-                      href={(selectedProject as { liveUrl?: string }).liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Visit Site
-                    </a>
-                  </Button>
-                )}
-                <Button
-                  asChild={!!selectedProject.githubUrl}
-                  size="sm"
-                  variant="outline"
-                  className="border-cyan-400/30 rounded-xl"
-                  disabled={!selectedProject.githubUrl}
-                >
-                  {selectedProject.githubUrl ? (
-                    <a href={selectedProject.githubUrl} target="_blank">
-                      View Code
-                    </a>
-                  ) : (
-                    <span>Code Available on Demand</span>
+                <div className="space-y-7">
+                  {(selectedProject as any).technologies?.length > 0 && (
+                    <section className="space-y-3">
+                      <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-zinc-500">
+                        <Layers3 className="h-3.5 w-3.5 text-cyan-400" /> Technologies
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {(selectedProject as any).technologies.map((tech: string) => (
+                          <span key={tech} className="rounded-full border border-cyan-400/15 bg-cyan-400/5 px-3 py-1.5 text-xs text-cyan-100">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </section>
                   )}
-                </Button>
+
+                  {(selectedProject as any).features?.length > 0 && (
+                    <section className="space-y-3">
+                      <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500">Highlights</p>
+                      <ul className="space-y-2.5 text-sm text-zinc-300">
+                        {(selectedProject as any).features.map((feature: string) => (
+                          <li key={feature} className="flex gap-2.5">
+                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  )}
+                </div>
               </div>
             </div>
           )}
         </DialogContent>
       </Dialog>
+      <ImageModal
+        images={images}
+        currentIndex={imageIdx}
+        isOpen={isImageViewerOpen}
+        onClose={() => setIsImageViewerOpen(false)}
+        onIndexChange={setImageIdx}
+        alt={selectedProject?.title ?? "Project preview"}
+      />
     </AnimatedSection>
   );
 }

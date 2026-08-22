@@ -49,46 +49,6 @@ export function AnimatedSection({
     return baseValue * settings.intensity;
   };
 
-  const getAnimationClasses = () => {
-    if (!shouldAnimate) {
-      return "";
-    }
-
-    const baseClasses = `transition-all duration-${settings.duration} ${settings.easing}`;
-    const delayClass = actualDelay ? `delay-${actualDelay}` : "";
-
-    if (!isIntersecting) {
-      switch (animation) {
-        case "fade-up":
-          return `${baseClasses} opacity-0 translate-y-[${getTransformValue(
-            10
-          )}px]`;
-        case "fade-in":
-          return `${baseClasses} opacity-0`;
-        case "slide-left":
-          return `${baseClasses} opacity-0 -translate-x-[${getTransformValue(
-            10
-          )}px]`;
-        case "slide-right":
-          return `${baseClasses} opacity-0 translate-x-[${getTransformValue(
-            10
-          )}px]`;
-        case "zoom-in":
-          return `${baseClasses} opacity-0 scale-[${
-            1 - getTransformValue(0.05)
-          }]`;
-        case "bounce":
-          return `${baseClasses} opacity-0 -translate-y-[${getTransformValue(
-            4
-          )}px]`;
-        default:
-          return `${baseClasses} opacity-0`;
-      }
-    }
-
-    return `${baseClasses} ${delayClass} opacity-100 translate-y-0 translate-x-0 scale-100`;
-  };
-
   const getAnimationStyles = () => {
     if (!shouldAnimate) {
       return {};
@@ -98,10 +58,12 @@ export function AnimatedSection({
       transitionDuration: `${settings.duration}ms`,
       transitionTimingFunction: settings.easing,
       transitionDelay: actualDelay ? `${actualDelay}ms` : undefined,
+      transitionProperty: "opacity, transform, filter",
       transform: !isIntersecting
         ? getTransformStyle()
         : "translate3d(0, 0, 0) scale(1)",
       opacity: isIntersecting ? 1 : 0,
+      filter: isIntersecting ? "blur(0)" : "blur(3px)",
     };
   };
 
@@ -130,7 +92,7 @@ export function AnimatedSection({
   return (
     <section
       ref={ref as any}
-      className={cn(className)}
+      className={cn("motion-reveal", className)}
       style={getAnimationStyles()}
       id={id}
     >

@@ -37,7 +37,7 @@ export function Magnetic({
       ref={ref}
       onPointerMove={onMove}
       onPointerLeave={reset}
-      className={cn("inline-flex transition-transform duration-150", className)}
+      className={cn("magnetic-target inline-flex", className)}
     >
       {children}
     </div>

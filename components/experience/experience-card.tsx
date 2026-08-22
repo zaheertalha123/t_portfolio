@@ -38,11 +38,15 @@ export function ExperienceCard({
   const isCurrent = roleStatus === "current";
 
   return (
-    <div className="space-y-4 pb-6 border-b border-zinc-800 last:border-0 last:pb-0 tracking-wide rounded-xl px-1 -mx-1 transition-colors hover:bg-zinc-800/20">
+    <article className="experience-entry group relative space-y-4 rounded-2xl px-4 py-4 sm:px-5 sm:py-5">
+      <span
+        aria-hidden
+        className="absolute inset-y-5 left-0 w-px rounded-full bg-cyan-400/0 transition-all duration-300 group-hover:bg-cyan-400/70 group-hover:shadow-[0_0_14px_rgba(34,211,238,0.75)]"
+      />
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-3">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <h4 className="font-medium text-base sm:text-lg">{title}</h4>
+            <h4 className="font-medium text-base sm:text-lg transition-colors duration-300 group-hover:text-cyan-50">{title}</h4>
             <span
               className={cn(
                 "inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] sm:text-xs font-medium border",
@@ -125,6 +129,6 @@ export function ExperienceCard({
           </ul>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

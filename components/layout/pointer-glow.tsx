@@ -1,20 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export function PointerGlow() {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [visible, setVisible] = useState(false);
+  const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (window.matchMedia("(pointer: coarse)").matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const onMove = (e: PointerEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
-      setVisible(true);
+      const element = glowRef.current;
+      if (!element) return;
+      element.style.setProperty("--glow-x", `${e.clientX}px`);
+      element.style.setProperty("--glow-y", `${e.clientY}px`);
+      element.dataset.visible = "true";
     };
-    const onLeave = () => setVisible(false);
+    const onLeave = () => {
+      if (glowRef.current) glowRef.current.dataset.visible = "false";
+    };
 
     window.addEventListener("pointermove", onMove);
     document.documentElement.addEventListener("mouseleave", onLeave);
@@ -27,12 +31,9 @@ export function PointerGlow() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed inset-0 z-[5] hidden md:block"
-      style={{
-        opacity: visible ? 1 : 0,
-        transition: "opacity 0.35s ease",
-        background: `radial-gradient(420px circle at ${pos.x}px ${pos.y}px, rgba(34,211,238,0.08), transparent 55%)`,
-      }}
+      ref={glowRef}
+      data-visible="false"
+      className="pointer-glow pointer-events-none fixed inset-0 z-[5] hidden md:block"
     />
   );
 }

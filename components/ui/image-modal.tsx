@@ -15,6 +15,7 @@ interface ImageModalProps {
   isOpen: boolean;
   onClose: () => void;
   onIndexChange?: (index: number) => void;
+  alt?: string;
 }
 
 export function ImageModal({ 
@@ -22,7 +23,8 @@ export function ImageModal({
   currentIndex, 
   isOpen, 
   onClose, 
-  onIndexChange 
+  onIndexChange,
+  alt = "Image preview"
 }: ImageModalProps) {
   const [localIndex, setLocalIndex] = useState(currentIndex);
 
@@ -55,7 +57,7 @@ export function ImageModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-black border-zinc-800">
+      <DialogContent className="image-viewer-modal max-w-[95vw] max-h-[95vh] overflow-hidden border-zinc-700/80 bg-black/95 p-0 shadow-2xl shadow-cyan-950/30">
         {/* Header with navigation counter */}
         {images.length > 1 && (
           <div className="absolute top-4 left-4 z-10 text-white text-sm font-medium">
@@ -89,10 +91,10 @@ export function ImageModal({
           <div className="relative max-w-full max-h-full">
             <Image
               src={images[localIndex]}
-              alt={`Image ${localIndex + 1}`}
+              alt={`${alt} — image ${localIndex + 1}`}
               width={0}
               height={0}
-              className="w-auto h-auto max-w-[90vw] max-h-[80vh] object-contain"
+              className="image-viewer-image h-auto w-auto max-h-[80vh] max-w-[90vw] object-contain"
               priority
               sizes="90vw"
             />
