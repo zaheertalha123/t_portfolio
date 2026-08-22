@@ -124,4 +124,128 @@ body {
     width: 100%;
     justify-content: center;
   }
+
+  .animate-orb-drift,
+  .animate-orb-drift-slow,
+  .animate-photo-ring,
+  .animate-float-soft,
+  .animate-pulse-ring,
+  .animate-shimmer {
+    animation: none !important;
+  }
+
+  .hover-lift:hover,
+  .icon-lift:hover {
+    transform: none;
+  }
+}
+
+@keyframes orb-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate3d(4%, -6%, 0) scale(1.12);
+    opacity: 0.7;
+  }
+}
+
+@keyframes orb-drift-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-5%, 7%, 0) scale(1.08);
+  }
+}
+
+@keyframes photo-ring {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.18),
+      0 0 24px rgba(34, 211, 238, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(34, 211, 238, 0),
+      0 0 32px rgba(34, 211, 238, 0.28);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -120% 0;
+  }
+  100% {
+    background-position: 220% 0;
+  }
+}
+
+.animate-orb-drift {
+  animation: orb-drift 14s ease-in-out infinite;
+}
+
+.animate-orb-drift-slow {
+  animation: orb-drift-slow 18s ease-in-out infinite;
+}
+
+.animate-photo-ring {
+  animation: photo-ring 3.6s ease-in-out infinite;
+}
+
+.animate-float-soft {
+  animation: float-soft 5s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 220% 100%;
+  animation: shimmer 4s linear infinite;
+}
+
+.hover-lift {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.icon-lift {
+  transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.icon-lift:hover {
+  transform: translateY(-2px) scale(1.08);
 }

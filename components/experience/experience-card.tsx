@@ -38,7 +38,7 @@ export function ExperienceCard({
   const isCurrent = roleStatus === "current";
 
   return (
-    <div className="space-y-4 pb-6 border-b border-zinc-800 last:border-0 last:pb-0 tracking-wide">
+    <div className="space-y-4 pb-6 border-b border-zinc-800 last:border-0 last:pb-0 tracking-wide rounded-xl px-1 -mx-1 transition-colors hover:bg-zinc-800/20">
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-3">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">

@@ -42,9 +42,14 @@ export function SkillsSection({
     <AnimatedSection animation="fade-up" id="skills">
       <Card className="bg-zinc-900/70 border-zinc-800 backdrop-blur-sm rounded-xl">
         <CardContent className="p-4 sm:p-6">
-          <div className="flex items-center mb-4 sm:mb-6">
-            <CodeIcon className="w-5 h-5 mr-2 text-cyan-400" />
-            <h3 className="text-lg font-medium">Hands-on Skills</h3>
+          <div className="flex items-center justify-between gap-3 mb-4 sm:mb-6">
+            <div className="flex items-center">
+              <CodeIcon className="w-5 h-5 mr-2 text-cyan-400" />
+              <h3 className="text-lg font-medium">Hands-on Skills</h3>
+            </div>
+            <p className="hidden sm:block text-[11px] text-zinc-500">
+              Click a skill to ask the AI
+            </p>
           </div>
 
           {/* Mobile: collapsible groups */}
@@ -60,7 +65,9 @@ export function SkillsSection({
                 <CollapsibleContent className="pt-2">
                   <div className="flex flex-wrap gap-2">
                     {technicalSkills[group.key].map((skill) => (
-                      <Tag key={skill}>{skill}</Tag>
+                      <Tag key={skill} interactive skill={skill}>
+                        {skill}
+                      </Tag>
                     ))}
                   </div>
                 </CollapsibleContent>
@@ -82,7 +89,9 @@ export function SkillsSection({
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {technicalSkills[group.key].map((skill) => (
-                      <Tag key={skill}>{skill}</Tag>
+                      <Tag key={skill} interactive skill={skill}>
+                        {skill}
+                      </Tag>
                     ))}
                   </div>
                 </div>

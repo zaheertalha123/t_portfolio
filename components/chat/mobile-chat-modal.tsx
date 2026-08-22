@@ -78,6 +78,18 @@ export function MobileChatModal({ onClose }: MobileChatModalProps) {
     [isLoading, rateLimited, sendMessage]
   );
 
+  useEffect(() => {
+    const onAskSkill = (event: Event) => {
+      const skill = (event as CustomEvent<{ skill?: string }>).detail?.skill;
+      if (!skill || isLoading || rateLimited) return;
+      void sendMessage({
+        text: `Is Talha a good fit for a role that needs ${skill}?`,
+      });
+    };
+    window.addEventListener("portfolio:ask-skill", onAskSkill);
+    return () => window.removeEventListener("portfolio:ask-skill", onAskSkill);
+  }, [isLoading, rateLimited, sendMessage]);
+
   return (
     <div className="flex flex-col h-screen bg-black text-white">
       {/* Mobile Modal Header */}

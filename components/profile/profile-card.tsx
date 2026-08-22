@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -11,10 +12,12 @@ import {
   Linkedin,
   Twitter,
   Instagram,
+  Check,
 } from "lucide-react";
 import { getPersonalInfo, getLanguagesInfo } from "@/lib/data";
 import Image from "next/image";
 import { ContactDialog } from "@/components/contact/contact-dialog";
+import { Magnetic } from "@/components/layout/magnetic";
 import { cn } from "@/lib/utils";
 
 type ProfileCardProps = {
@@ -22,6 +25,7 @@ type ProfileCardProps = {
 };
 
 export function ProfileCard({ layout = "stacked" }: ProfileCardProps) {
+  const [emailCopied, setEmailCopied] = useState(false);
   const personalInfo = getPersonalInfo();
   const languages = getLanguagesInfo();
   const isSidebar = layout === "sidebar";
@@ -58,7 +62,7 @@ export function ProfileCard({ layout = "stacked" }: ProfileCardProps) {
             <div className={cn(isSidebar ? "my-2 lg:my-2" : "my-3 sm:my-4")}>
               <div
                 className={cn(
-                  "relative rounded-full overflow-hidden border-2 border-cyan-400/30 shadow-lg",
+                  "relative rounded-full overflow-hidden border-2 border-cyan-400/40 animate-photo-ring",
                   isSidebar
                     ? "w-28 h-28 sm:w-36 sm:h-36 lg:w-32 lg:h-32 xl:w-44 xl:h-44"
                     : "w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36"
@@ -108,7 +112,7 @@ export function ProfileCard({ layout = "stacked" }: ProfileCardProps) {
               <Badge
                 key={index}
                 variant="outline"
-                className="bg-zinc-800/50 hover:bg-zinc-700 px-2 py-1 text-xs sm:text-sm"
+                className="bg-zinc-800/50 hover:bg-zinc-700 hover:border-cyan-400/40 px-2 py-1 text-xs sm:text-sm transition-all hover:-translate-y-0.5"
               >
                 {badge}
               </Badge>
@@ -154,79 +158,107 @@ export function ProfileCard({ layout = "stacked" }: ProfileCardProps) {
           )}
 
           <div className="border-t border-zinc-800 pt-4 space-y-4 pb-2">
-            <div className="flex items-center justify-center gap-5 flex-wrap">
+            <div className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
               {linkedIn && (
-                <a
-                  href={linkedIn.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="text-cyan-400 hover:text-cyan-300 transition-colors p-2 rounded-lg hover:bg-zinc-800/60"
-                >
-                  <Linkedin className="w-6 h-6" />
-                </a>
+                <Magnetic>
+                  <a
+                    href={linkedIn.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="text-cyan-400 hover:text-cyan-300 icon-lift p-2 rounded-lg hover:bg-zinc-800/60"
+                  >
+                    <Linkedin className="w-6 h-6" />
+                  </a>
+                </Magnetic>
               )}
 
-              <a
-                href={`mailto:${personalInfo.email}`}
-                aria-label="Email"
-                className="text-cyan-400 hover:text-cyan-300 transition-colors p-2 rounded-lg hover:bg-zinc-800/60"
-              >
-                <Mail className="w-6 h-6" />
-              </a>
+              <Magnetic>
+                <button
+                  type="button"
+                  aria-label={emailCopied ? "Email copied" : "Copy email"}
+                  title={emailCopied ? "Copied" : "Copy email"}
+                  className="text-cyan-400 hover:text-cyan-300 icon-lift p-2 rounded-lg hover:bg-zinc-800/60"
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText(personalInfo.email);
+                      setEmailCopied(true);
+                      window.setTimeout(() => setEmailCopied(false), 1600);
+                    } catch {
+                      window.location.href = `mailto:${personalInfo.email}`;
+                    }
+                  }}
+                >
+                  {emailCopied ? (
+                    <Check className="w-6 h-6 text-emerald-400" />
+                  ) : (
+                    <Mail className="w-6 h-6" />
+                  )}
+                </button>
+              </Magnetic>
 
               {github && (
-                <a
-                  href={github.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                  className="text-cyan-400 hover:text-cyan-300 transition-colors p-2 rounded-lg hover:bg-zinc-800/60"
-                >
-                  <Github className="w-6 h-6" />
-                </a>
+                <Magnetic>
+                  <a
+                    href={github.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    className="text-cyan-400 hover:text-cyan-300 icon-lift p-2 rounded-lg hover:bg-zinc-800/60"
+                  >
+                    <Github className="w-6 h-6" />
+                  </a>
+                </Magnetic>
               )}
 
               {instagram && (
-                <a
-                  href={instagram.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="text-cyan-400 hover:text-cyan-300 transition-colors p-2 rounded-lg hover:bg-zinc-800/60"
-                >
-                  <Instagram className="w-6 h-6" />
-                </a>
+                <Magnetic>
+                  <a
+                    href={instagram.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="text-cyan-400 hover:text-cyan-300 icon-lift p-2 rounded-lg hover:bg-zinc-800/60"
+                  >
+                    <Instagram className="w-6 h-6" />
+                  </a>
+                </Magnetic>
               )}
 
               {xProfile && (
-                <a
-                  href={xProfile.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="X"
-                  className="text-cyan-400 hover:text-cyan-300 transition-colors p-2 rounded-lg hover:bg-zinc-800/60"
-                >
-                  <Twitter className="w-6 h-6" />
-                </a>
+                <Magnetic>
+                  <a
+                    href={xProfile.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="X"
+                    className="text-cyan-400 hover:text-cyan-300 icon-lift p-2 rounded-lg hover:bg-zinc-800/60"
+                  >
+                    <Twitter className="w-6 h-6" />
+                  </a>
+                </Magnetic>
               )}
 
               {personalInfo.location && (
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(personalInfo.location)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Location: ${personalInfo.location}`}
-                  title={personalInfo.location}
-                  className="text-cyan-400 hover:text-cyan-300 transition-colors p-2 rounded-lg hover:bg-zinc-800/60"
-                >
-                  <MapPin className="w-6 h-6" />
-                </a>
+                <Magnetic>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(personalInfo.location)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Location: ${personalInfo.location}`}
+                    title={personalInfo.location}
+                    className="text-cyan-400 hover:text-cyan-300 icon-lift p-2 rounded-lg hover:bg-zinc-800/60"
+                  >
+                    <MapPin className="w-6 h-6" />
+                  </a>
+                </Magnetic>
               )}
             </div>
 
             <div className="flex justify-center">
-              <ContactDialog />
+              <Magnetic strength={14}>
+                <ContactDialog />
+              </Magnetic>
             </div>
           </div>
         </div>

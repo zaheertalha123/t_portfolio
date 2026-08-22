@@ -2,6 +2,9 @@ import { PortfolioHeader } from "@/components/header/portfolio-header";
 import { AIRecruiterChat } from "@/components/chat/ai-recruiter-chat";
 import { FloatingAIButton } from "@/components/chat/floating-ai-button";
 import { AnimatedSection } from "@/components/layout/animated-section";
+import { AmbientBackground } from "@/components/layout/ambient-background";
+import { ScrollProgress } from "@/components/layout/scroll-progress";
+import { PointerGlow } from "@/components/layout/pointer-glow";
 import { ProfileSection } from "@/components/sections/ProfileSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { CommunityWorkSection } from "@/components/sections/CommunityWorkSection";
@@ -26,10 +29,13 @@ export default function Home() {
   const communityWork = getCommunityWorkInfo();
 
   return (
-    <main className="min-h-screen lg:h-screen lg:overflow-hidden bg-black text-white">
+    <main className="relative min-h-screen lg:h-screen lg:overflow-hidden bg-black text-white">
+      <AmbientBackground />
+      <PointerGlow />
+      <ScrollProgress />
       <PortfolioHeader />
 
-      <div className="relative container px-2 sm:px-4 pt-20 sm:pt-24 lg:pt-20 lg:grid lg:grid-cols-3 lg:gap-6 lg:items-start">
+      <div className="relative z-10 container px-2 sm:px-4 pt-20 sm:pt-24 lg:pt-20 lg:grid lg:grid-cols-3 lg:gap-6 lg:items-start">
         <ProfileSection />
 
         <div

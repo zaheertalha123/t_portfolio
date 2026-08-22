@@ -90,6 +90,20 @@ export function AIRecruiterChat() {
     [isLoading, rateLimited, sendMessage]
   );
 
+  useEffect(() => {
+    const onAskSkill = (event: Event) => {
+      const skill = (event as CustomEvent<{ skill?: string }>).detail?.skill;
+      if (!skill || isLoading || rateLimited) return;
+      const target = document.getElementById("ai-chat");
+      target?.scrollIntoView({ behavior: "smooth", block: "start" });
+      void sendMessage({
+        text: `Is Talha a good fit for a role that needs ${skill}?`,
+      });
+    };
+    window.addEventListener("portfolio:ask-skill", onAskSkill);
+    return () => window.removeEventListener("portfolio:ask-skill", onAskSkill);
+  }, [isLoading, rateLimited, sendMessage]);
+
   return (
     <Card className="bg-zinc-900/70 border-zinc-800 backdrop-blur-sm rounded-xl lg:h-[calc(100vh-6rem)] min-h-[400px] sm:min-h-[500px]">
       <Dialog open={rateLimitModalOpen} onOpenChange={setRateLimitModalOpen}>
@@ -125,7 +139,7 @@ export function AIRecruiterChat() {
           {messages.length === 0 && !isLoading ? (
             <div className="flex-1 relative px-3 sm:px-5 flex items-center justify-center">
               <div className="relative z-10 flex flex-col items-center text-center space-y-3 sm:space-y-4 px-2 sm:px-6 bg-transparent">
-                <div className="hidden sm:block p-3 sm:p-4 rounded-2xl bg-zinc-800/60 border border-zinc-700/50 shadow-lg shadow-cyan-500/10">
+                <div className="hidden sm:block p-3 sm:p-4 rounded-2xl bg-zinc-800/60 border border-zinc-700/50 shadow-lg shadow-cyan-500/20 animate-photo-ring">
                   <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400 animate-bounce" />
                 </div>
                 <h4 className="text-sm sm:text-base lg:text-lg font-medium text-zinc-100 px-2">

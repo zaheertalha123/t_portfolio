@@ -25,7 +25,7 @@ export function AchievementsSection({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             {achievements.map((achievement, index) => (
               <AnimatedSection key={index} animation="fade-up" delay={100 * (index + 1)}>
-                <div className="bg-zinc-800/30 rounded-xl p-3 sm:p-4 border border-zinc-700/50 hover:border-cyan-400/30 transition-colors h-full">
+                <div className="bg-zinc-800/30 rounded-xl p-3 sm:p-4 border border-zinc-700/50 hover:border-cyan-400/40 hover-lift h-full">
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <h4 className="text-sm font-semibold text-cyan-400 flex-1">
                       {achievement.title}
