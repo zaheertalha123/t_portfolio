@@ -172,7 +172,23 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
               )}
 
               {/* CTA Button */}
-              <div className="flex gap-2 pt-4">
+              <div className="flex gap-2 pt-4 flex-wrap">
+                {(selectedProject as { liveUrl?: string }).liveUrl && (
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="outline"
+                    className="border-cyan-400/30 rounded-xl"
+                  >
+                    <a
+                      href={(selectedProject as { liveUrl?: string }).liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Visit Site
+                    </a>
+                  </Button>
+                )}
                 <Button
                   asChild={!!selectedProject.githubUrl}
                   size="sm"

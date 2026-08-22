@@ -4,16 +4,16 @@ import { ProfileCard } from "@/components/profile/profile-card";
 export function ProfileSection() {
   return (
     <>
-      <div className="hidden md:block md:col-span-1">
-        <AnimatedSection animation="slide-right" className="h-full">
-          <ProfileCard />
+      <div className="hidden lg:block lg:col-span-1 lg:sticky lg:top-20 lg:self-start">
+        <AnimatedSection animation="slide-right">
+          <ProfileCard layout="sidebar" />
         </AnimatedSection>
       </div>
 
-      {/* Mobile Profile Section */}
-      <div className="md:hidden sm:px-1 -mt-8 mb-6">
+      {/* Mobile + tablet profile */}
+      <div className="lg:hidden mb-6">
         <AnimatedSection animation="slide-right">
-          <ProfileCard />
+          <ProfileCard layout="stacked" />
         </AnimatedSection>
       </div>
     </>

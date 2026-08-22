@@ -27,9 +27,20 @@ export function EducationSection() {
                       <h4 className="font-medium text-base sm:text-lg">
                         {edu.degree}
                       </h4>
-                      <div className="text-sm text-cyan-400">
-                        {edu.institution}
-                      </div>
+                      {"institutionUrl" in edu && edu.institutionUrl ? (
+                        <a
+                          href={edu.institutionUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
+                        >
+                          {edu.institution}
+                        </a>
+                      ) : (
+                        <div className="text-sm text-cyan-400">
+                          {edu.institution}
+                        </div>
+                      )}
                     </div>
                     <div className="text-xs text-zinc-400 bg-zinc-800/70 px-2 py-1 sm:px-3 sm:py-1 rounded-full self-start mt-1 sm:mt-0 sm:self-auto">
                       {edu.year}

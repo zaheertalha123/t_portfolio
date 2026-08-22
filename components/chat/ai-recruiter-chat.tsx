@@ -12,6 +12,7 @@ import {
   usePortfolioAiChat,
   RateLimitChatBanner,
 } from "@/components/chat/portfolio-ai-chat-shared";
+import { ChatQuestionSlider } from "@/components/chat/chat-question-slider";
 import {
   Dialog,
   DialogContent,
@@ -80,10 +81,14 @@ export function AIRecruiterChat() {
     [submitMessage]
   );
 
-  const quickQuestions = [
-    "Is Talha a good fit for a Next.js role?",
-    "Tell me about his AI integration experience",
-  ];
+  const handleSuggestedQuestion = useCallback(
+    (question: string) => {
+      if (isLoading || rateLimited) return;
+      void sendMessage({ text: question });
+      setInput("");
+    },
+    [isLoading, rateLimited, sendMessage]
+  );
 
   return (
     <Card className="bg-zinc-900/70 border-zinc-800 backdrop-blur-sm rounded-xl lg:h-[calc(100vh-6rem)] min-h-[400px] sm:min-h-[500px]">
@@ -197,22 +202,10 @@ export function AIRecruiterChat() {
             </div>
           )}
           <div className="mb-3">
-            <div className="flex flex-wrap gap-1.5 sm:gap-2">
-              {quickQuestions.map((question, index) => (
-                <Button
-                  key={index}
-                  variant="ghost"
-                  size="sm"
-                  disabled={rateLimited || isLoading}
-                  className={`text-xs sm:text-sm bg-zinc-800/50 hover:text-cyan-400 text-cyan-400 border border-zinc-700/50 rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 ${
-                    index > 0 ? "hidden sm:inline-flex" : ""
-                  }`}
-                  onClick={() => setInput(question)}
-                >
-                  {question}
-                </Button>
-              ))}
-            </div>
+            <ChatQuestionSlider
+              disabled={rateLimited || isLoading}
+              onQuestionSelect={handleSuggestedQuestion}
+            />
           </div>
 
           <form

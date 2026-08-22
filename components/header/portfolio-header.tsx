@@ -22,12 +22,6 @@ export function PortfolioHeader() {
     );
 
     let result = [...mapped];
-    const skillsIdx = result.findIndex((i) => i.href === "#skills");
-    const expIdx = result.findIndex((i) => i.href === "#experience");
-    if (skillsIdx !== -1 && expIdx !== -1 && skillsIdx > expIdx) {
-      const [skillsItem] = result.splice(skillsIdx, 1);
-      result.splice(expIdx, 0, skillsItem);
-    }
 
     const aiIdx = result.findIndex((i) => i.href === "#ai-chat");
     if (aiIdx > 0) {
@@ -225,18 +219,18 @@ export function PortfolioHeader() {
         )}
       >
         {/* Desktop header */}
-        <div className="hidden md:flex items-center justify-between">
-          <Link href="/" className="flex items-center group">
-            <div className="text-cyan-400/80 font-bold text-xl relative overflow-hidden transition-transform duration-300 group-hover:scale-105">
+        <div className="hidden lg:flex items-center justify-between min-w-0 gap-4">
+          <Link href="/" className="flex items-center group min-w-0 shrink">
+            <div className="text-cyan-400/80 font-bold text-xl relative overflow-hidden transition-transform duration-300 group-hover:scale-105 truncate">
               {personalInfo.name}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full"></span>
             </div>
-            <span className="text-zinc-200 text-sm ml-2 hidden sm:inline-block transition-all duration-300 group-hover:text-zinc-100">
+            <span className="text-zinc-200 text-sm ml-2 hidden xl:inline-block shrink-0 transition-all duration-300 group-hover:text-zinc-100">
               / {personalInfo.title}
             </span>
           </Link>
 
-          <nav className="flex items-center space-x-1">
+          <nav className="flex items-center space-x-1 shrink-0">
             {orderedNavItems.map((item) => {
               const isActive = item.href.startsWith("#")
                 ? activeSection === item.href.substring(1)

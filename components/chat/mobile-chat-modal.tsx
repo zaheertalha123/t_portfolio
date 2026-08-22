@@ -11,6 +11,7 @@ import {
   usePortfolioAiChat,
   RateLimitChatBanner,
 } from "@/components/chat/portfolio-ai-chat-shared";
+import { ChatQuestionSlider } from "@/components/chat/chat-question-slider";
 
 const getMessageText = (message: UIMessage): string => {
   try {
@@ -68,10 +69,14 @@ export function MobileChatModal({ onClose }: MobileChatModalProps) {
     [submitMessage]
   );
 
-  const quickQuestions = [
-    "Is he a good fit for a Next.js role?",
-    "Tell me about his AI integration experience",
-  ];
+  const handleSuggestedQuestion = useCallback(
+    (question: string) => {
+      if (isLoading || rateLimited) return;
+      void sendMessage({ text: question });
+      setInput("");
+    },
+    [isLoading, rateLimited, sendMessage]
+  );
 
   return (
     <div className="flex flex-col h-screen bg-black text-white">
@@ -176,20 +181,10 @@ export function MobileChatModal({ onClose }: MobileChatModalProps) {
           </div>
         )}
         <div className="mb-3">
-          <div className="flex flex-wrap gap-2">
-            {quickQuestions.map((question, index) => (
-              <Button
-                key={index}
-                variant="ghost"
-                size="sm"
-                disabled={rateLimited || isLoading}
-                className="text-sm bg-zinc-800/50 hover:text-cyan-400 text-cyan-400 border border-zinc-700/50 rounded-xl px-3 py-2"
-                onClick={() => setInput(question)}
-              >
-                {question}
-              </Button>
-            ))}
-          </div>
+          <ChatQuestionSlider
+            disabled={rateLimited || isLoading}
+            onQuestionSelect={handleSuggestedQuestion}
+          />
         </div>
 
         <form

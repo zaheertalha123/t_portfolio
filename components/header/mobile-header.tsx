@@ -36,21 +36,18 @@ export function MobileHeader({
   return (
     <>
       {/* Mobile header content */}
-      <div className="flex items-center justify-between md:hidden">
-        <Link href="/" className="flex items-center group">
-          <div className="text-cyan-400/80 font-bold text-xl relative overflow-hidden transition-transform duration-300 group-hover:scale-105">
+      <div className="flex items-center justify-between gap-3 lg:hidden min-w-0">
+        <Link href="/" className="flex items-center group min-w-0 flex-1">
+          <div className="text-cyan-400/80 font-bold text-lg sm:text-xl relative transition-transform duration-300 group-hover:scale-105 truncate">
             {personalInfo.name}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full"></span>
           </div>
-          <span className="text-zinc-200 text-sm ml-2 hidden sm:inline-block transition-all duration-300 group-hover:text-zinc-100">
-            / {personalInfo.title}
-          </span>
         </Link>
 
         {/* Mobile menu toggle */}
         <Button
           variant="ghost"
-          className="text-zinc-200 [&_svg]:!size-6"
+          className="text-zinc-200 [&_svg]:!size-6 shrink-0"
           onClick={toggleMobileMenu}
         >
           {mobileMenuOpen ? (
@@ -65,7 +62,7 @@ export function MobileHeader({
       <div
         aria-hidden="true"
         className={cn(
-          "fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden transition-opacity duration-300",
+          "fixed inset-0 z-40 bg-black/40 backdrop-blur-sm lg:hidden transition-opacity duration-300",
           mobileMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"
         )}
         onClick={() => setMobileMenuOpen(false)}
@@ -75,7 +72,7 @@ export function MobileHeader({
       <div
         id="mobile-menu"
         className={cn(
-          "md:hidden absolute left-4 right-4 z-50 mt-2 rounded-xl border border-zinc-800/50",
+          "lg:hidden absolute left-4 right-4 z-50 mt-2 rounded-xl border border-zinc-800/50",
           "bg-zinc-900/95 overflow-hidden",
           "transition-[opacity,transform,max-height] duration-300",
           mobileMenuOpen
