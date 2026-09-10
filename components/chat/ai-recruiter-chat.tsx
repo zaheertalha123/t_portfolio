@@ -12,6 +12,10 @@ import {
   usePortfolioAiChat,
   RateLimitChatBanner,
 } from "@/components/chat/portfolio-ai-chat-shared";
+import {
+  ChatMessageContent,
+  getMessageText,
+} from "@/components/chat/chat-message-content";
 import { ChatQuestionSlider } from "@/components/chat/chat-question-slider";
 import {
   Dialog,
@@ -21,23 +25,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-
-const getMessageText = (message: UIMessage): string => {
-  try {
-    const parts = (message as any).parts as Array<{
-      type: string;
-      text?: string;
-    }>;
-    return (
-      parts
-        ?.filter((p) => p && p.type === "text" && typeof p.text === "string")
-        .map((p) => p.text as string)
-        .join("") ?? ""
-    );
-  } catch {
-    return "";
-  }
-};
 
 export function AIRecruiterChat() {
   const [input, setInput] = useState("");
@@ -174,9 +161,7 @@ export function AIRecruiterChat() {
                             : "bg-zinc-800 text-zinc-200"
                         }`}
                       >
-                        <p className="text-sm leading-relaxed">
-                          {getMessageText(message)}
-                        </p>
+                        <ChatMessageContent text={getMessageText(message)} />
                       </div>
                     </div>
                   </div>
