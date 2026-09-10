@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { MobileChatModal } from "@/components/chat/mobile-chat-modal";
+import { LazyMobileChat } from "@/components/chat/lazy-mobile-chat";
 
 export function FloatingAIButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,11 +22,7 @@ export function FloatingAIButton() {
         </div>
       </div>
 
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="left-0 top-0 translate-x-0 translate-y-0 h-[100dvh] w-full max-w-full overflow-hidden p-0 border-0 bg-black gap-0 rounded-none lg:hidden [&>button]:hidden">
-          <MobileChatModal onClose={() => setIsOpen(false)} />
-        </DialogContent>
-      </Dialog>
+      <LazyMobileChat open={isOpen} onOpenChange={setIsOpen} />
     </>
   );
 }

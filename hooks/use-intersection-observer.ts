@@ -6,23 +6,26 @@ interface UseIntersectionObserverProps {
   threshold?: number
   rootMargin?: string
   freezeOnceVisible?: boolean
+  defaultIntersecting?: boolean
 }
 
 export function useIntersectionObserver({
   threshold = 0.1,
   rootMargin = "0px",
   freezeOnceVisible = true,
+  defaultIntersecting = false,
 }: UseIntersectionObserverProps = {}) {
-  const [isIntersecting, setIsIntersecting] = useState(false)
+  const [isIntersecting, setIsIntersecting] = useState(defaultIntersecting)
   const ref = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
+    if (defaultIntersecting) return
+
     const node = ref.current
     if (!node) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Update state when observer callback fires
         setIsIntersecting(entry.isIntersecting)
 
         if (entry.isIntersecting && freezeOnceVisible) {
@@ -37,7 +40,7 @@ export function useIntersectionObserver({
     return () => {
       observer.disconnect()
     }
-  }, [threshold, rootMargin, freezeOnceVisible])
+  }, [threshold, rootMargin, freezeOnceVisible, defaultIntersecting])
 
   return { ref, isIntersecting }
 }

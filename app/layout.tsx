@@ -2,20 +2,22 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-// import { ScrollProgressIndicator } from "@/components/scroll-progress-indicator"
-import { AnimationProvider } from "@/contexts/animation-context";
 import { getMetaInfo } from "@/lib/data";
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  adjustFontFallback: true,
+});
 
 const metaInfo = getMetaInfo();
 
 export const metadata: Metadata = {
   title: metaInfo.title,
   description: metaInfo.description,
-  generator: "v0.app",
   icons: {
     icon: "/favicon_t.png",
   },
@@ -28,11 +30,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/t_profile.jpg"
+          type="image/jpeg"
+          fetchPriority="high"
+        />
+      </head>
       <body className={inter.className}>
-        <AnimationProvider>
-          {/* <ScrollProgressIndicator /> */}
-          {children}
-        </AnimationProvider>
+        {children}
         <Analytics />
         <SpeedInsights />
       </body>

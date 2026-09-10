@@ -5,8 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { getNavItems, getPersonalInfo } from "@/lib/data";
 import { MobileHeader } from "@/components/header/mobile-header";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { MobileChatModal } from "@/components/chat/mobile-chat-modal";
+import { LazyMobileChat } from "@/components/chat/lazy-mobile-chat";
 
 export function PortfolioHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -116,13 +115,25 @@ export function PortfolioHeader() {
   useEffect(() => {
     let containerEl: HTMLElement | null = null;
 
+    let raf = 0;
     const handleScroll = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(() => {
+        raf = 0;
+        runScrollUpdate();
+      });
+    };
+
+    const runScrollUpdate = () => {
       const el =
         containerEl ||
         (document.getElementById("right-pane") as HTMLElement | null);
       const canUseContainer = !!(el && el.scrollHeight > el.clientHeight);
       const scrollTop = canUseContainer ? el!.scrollTop : window.scrollY;
-      setScrolled(scrollTop > 20);
+      setScrolled((prev) => {
+        const next = scrollTop > 20;
+        return prev === next ? prev : next;
+      });
 
       const ids = orderedNavItems
         .filter((item) => item.href.startsWith("#"))
@@ -162,12 +173,11 @@ export function PortfolioHeader() {
         currentActiveId = ids[ids.length - 1];
       }
 
-      setActiveSection(currentActiveId);
-
+      let nextActive = currentActiveId;
       if (scrollTop < 100) {
-        const firstSectionId = ids[0] || "";
-        setActiveSection(firstSectionId);
+        nextActive = ids[0] || "";
       }
+      setActiveSection((prev) => (prev === nextActive ? prev : nextActive));
     };
 
     const bindContainer = () => {
@@ -176,23 +186,20 @@ export function PortfolioHeader() {
         if (containerEl)
           containerEl.removeEventListener("scroll", handleScroll);
         containerEl = el;
-        containerEl.addEventListener("scroll", handleScroll);
+        containerEl.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll();
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     bindContainer();
-
-    const observer = new MutationObserver(() => bindContainer());
-    observer.observe(document.body, { childList: true, subtree: true });
-    window.addEventListener("resize", bindContainer);
+    window.addEventListener("resize", bindContainer, { passive: true });
 
     handleScroll();
     return () => {
+      if (raf) window.cancelAnimationFrame(raf);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", bindContainer);
-      observer.disconnect();
       if (containerEl) containerEl.removeEventListener("scroll", handleScroll);
     };
   }, [orderedNavItems]);
@@ -286,11 +293,7 @@ export function PortfolioHeader() {
       </div>
 
       {/* Mobile Chat Modal Dialog */}
-      <Dialog open={isChatOpen} onOpenChange={setIsChatOpen}>
-        <DialogContent className="left-0 top-0 translate-x-0 translate-y-0 h-[100dvh] w-full max-w-full overflow-hidden p-0 border-0 bg-black gap-0 rounded-none lg:hidden [&>button]:hidden">
-          <MobileChatModal onClose={() => setIsChatOpen(false)} />
-        </DialogContent>
-      </Dialog>
+      <LazyMobileChat open={isChatOpen} onOpenChange={setIsChatOpen} />
     </header>
   );
 }

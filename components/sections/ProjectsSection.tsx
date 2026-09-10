@@ -106,7 +106,9 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                       src={images[imageIdx] || "/placeholder.svg"}
                       alt={selectedProject.title}
                       fill
-                        className="object-contain p-2 transition-transform duration-500 group-hover/image:scale-[1.025]"
+                      sizes="(min-width: 1024px) 520px, 90vw"
+                      quality={70}
+                      className="object-contain p-2 transition-transform duration-500 group-hover/image:scale-[1.025]"
                     />
                       <div className="pointer-events-none absolute inset-0 bg-cyan-400/0 transition-colors duration-300 group-hover/image:bg-cyan-400/5" />
                       <Button

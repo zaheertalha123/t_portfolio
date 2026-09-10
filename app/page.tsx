@@ -1,6 +1,7 @@
+import nextDynamic from "next/dynamic";
 import { PortfolioHeader } from "@/components/header/portfolio-header";
-import { AIRecruiterChat } from "@/components/chat/ai-recruiter-chat";
 import { FloatingAIButton } from "@/components/chat/floating-ai-button";
+import { ChatSkeleton } from "@/components/chat/chat-skeleton";
 import { AnimatedSection } from "@/components/layout/animated-section";
 import { AmbientBackground } from "@/components/layout/ambient-background";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
@@ -20,6 +21,16 @@ import {
   getTechnicalSkillsInfo,
   getCommunityWorkInfo,
 } from "@/lib/data";
+
+export const dynamic = "force-static";
+
+const AIRecruiterChat = nextDynamic(
+  () =>
+    import("@/components/chat/ai-recruiter-chat").then(
+      (mod) => mod.AIRecruiterChat
+    ),
+  { ssr: false, loading: () => <ChatSkeleton /> }
+);
 
 export default function Home() {
   const projects: Project[] = getAllProjects();
@@ -45,6 +56,7 @@ export default function Home() {
           <AnimatedSection
             animation="fade-up"
             id="ai-chat"
+            eager
             className="hidden lg:block"
           >
             <AIRecruiterChat />

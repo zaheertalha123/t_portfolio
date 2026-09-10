@@ -48,6 +48,8 @@ export function ProjectCard({
             src={image || "/placeholder.svg"}
             alt={title}
             fill
+            sizes="(min-width: 1024px) 220px, (min-width: 640px) 45vw, 90vw"
+            quality={75}
             className="project-card-image object-contain cursor-pointer"
             onClick={handleImageClick}
           />
@@ -61,12 +63,14 @@ export function ProjectCard({
       </TiltCard>
     </div>
 
-    <ImageModal
-      images={[image || "/placeholder.svg"]}
-      currentIndex={0}
-      isOpen={isImageModalOpen}
-      onClose={() => setIsImageModalOpen(false)}
-    />
+    {isImageModalOpen ? (
+      <ImageModal
+        images={[image || "/placeholder.svg"]}
+        currentIndex={0}
+        isOpen={isImageModalOpen}
+        onClose={() => setIsImageModalOpen(false)}
+      />
+    ) : null}
     </>
   );
 }

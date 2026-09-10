@@ -92,11 +92,11 @@ export function ImageModal({
             <Image
               src={images[localIndex]}
               alt={`${alt} — image ${localIndex + 1}`}
-              width={0}
-              height={0}
+              width={1600}
+              height={900}
               className="image-viewer-image h-auto w-auto max-h-[80vh] max-w-[90vw] object-contain"
-              priority
               sizes="90vw"
+              quality={70}
             />
           </div>
         </div>

@@ -35,7 +35,7 @@ export function TiltCard({ children, className }: TiltCardProps) {
       onPointerMove={onMove}
       onPointerLeave={reset}
       className={cn(
-        "tilt-card will-change-transform",
+        "tilt-card",
         className
       )}
     >

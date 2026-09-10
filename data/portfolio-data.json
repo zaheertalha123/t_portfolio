@@ -402,7 +402,7 @@
         "Responsive marketing experience optimized for mobile and desktop"
       ],
       "technologies": ["Next.js", "React", "Tailwind CSS"],
-      "coverImage": "nextjs.png",
+      "coverImage": "/nextjs.png",
       "gallery": [
         { "url": "/cs_ports/cssports_01.png" },
         { "url": "/cs_ports/cssports_02.png" },

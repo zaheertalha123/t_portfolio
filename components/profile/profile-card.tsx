@@ -18,17 +18,11 @@ import { getPersonalInfo, getLanguagesInfo } from "@/lib/data";
 import Image from "next/image";
 import { ContactDialog } from "@/components/contact/contact-dialog";
 import { Magnetic } from "@/components/layout/magnetic";
-import { cn } from "@/lib/utils";
 
-type ProfileCardProps = {
-  layout?: "sidebar" | "stacked";
-};
-
-export function ProfileCard({ layout = "stacked" }: ProfileCardProps) {
+export function ProfileCard() {
   const [emailCopied, setEmailCopied] = useState(false);
   const personalInfo = getPersonalInfo();
   const languages = getLanguagesInfo();
-  const isSidebar = layout === "sidebar";
 
   const linkedIn = personalInfo.social.find(
     (social) => social.platform === "LinkedIn"
@@ -44,70 +38,36 @@ export function ProfileCard({ layout = "stacked" }: ProfileCardProps) {
   );
 
   return (
-    <Card
-      className={cn(
-        "bg-zinc-900/70 border-zinc-800 backdrop-blur-sm col-span-1 rounded-xl",
-        isSidebar &&
-          "lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto scrollbar-hide lg:overscroll-y-contain"
-      )}
-    >
+    <Card className="bg-zinc-900/70 border-zinc-800 backdrop-blur-sm col-span-1 rounded-xl lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto scrollbar-hide lg:overscroll-y-contain">
       <CardContent className="p-0 flex flex-col">
-        <div
-          className={cn(
-            "bg-gradient-to-r from-zinc-800/50 to-zinc-900/50 flex flex-col items-center border-b border-zinc-800",
-            isSidebar ? "p-3 lg:p-3" : "p-4 sm:p-5"
-          )}
-        >
+        <div className="bg-gradient-to-r from-zinc-800/50 to-zinc-900/50 flex flex-col items-center border-b border-zinc-800 p-4 sm:p-5 lg:p-3">
           <div className="flex flex-col items-center w-full">
-            <div className={cn(isSidebar ? "my-2 lg:my-2" : "my-3 sm:my-4")}>
-              <div
-                className={cn(
-                  "relative rounded-full overflow-hidden border-2 border-cyan-400/40 animate-photo-ring",
-                  isSidebar
-                    ? "w-28 h-28 sm:w-36 sm:h-36 lg:w-32 lg:h-32 xl:w-44 xl:h-44"
-                    : "w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36"
-                )}
-              >
+            <div className="my-3 sm:my-4 lg:my-2">
+              <div className="relative rounded-full overflow-hidden border-2 border-cyan-400/40 animate-photo-ring w-24 h-24 sm:w-32 sm:h-32 lg:w-32 lg:h-32 xl:w-44 xl:h-44">
                 <Image
                   src={personalInfo.profileImage || "/placeholder-user.jpg"}
                   alt={`${personalInfo.name} - Profile Picture`}
                   fill
-                  className="object-cover"
+                  sizes="(min-width: 1280px) 176px, (min-width: 640px) 128px, 96px"
                   priority
+                  fetchPriority="high"
+                  unoptimized
+                  className="object-cover"
                 />
               </div>
             </div>
 
             <div className="text-center">
-              <h2
-                className={cn(
-                  "text-cyan-400",
-                  isSidebar
-                    ? "text-base sm:text-lg lg:text-base xl:text-lg"
-                    : "text-base sm:text-lg"
-                )}
-              >
+              <h2 className="text-cyan-400 text-base sm:text-lg lg:text-base xl:text-lg">
                 {personalInfo.title}
               </h2>
-              <h1
-                className={cn(
-                  "font-bold text-white",
-                  isSidebar
-                    ? "text-lg sm:text-xl lg:text-lg xl:text-2xl my-2 lg:my-1.5 xl:my-3"
-                    : "text-xl sm:text-2xl my-2 sm:my-3"
-                )}
-              >
+              <h1 className="font-bold text-white text-xl sm:text-2xl lg:text-lg xl:text-2xl my-2 sm:my-3 lg:my-1.5 xl:my-3">
                 {personalInfo.name}
               </h1>
             </div>
           </div>
 
-          <div
-            className={cn(
-              "flex flex-wrap gap-2 justify-center",
-              isSidebar ? "mb-2 sm:mb-3 lg:mb-2" : "mb-3 sm:mb-4"
-            )}
-          >
+          <div className="flex flex-wrap gap-2 justify-center mb-3 sm:mb-4 lg:mb-2">
             {personalInfo.badges.map((badge, index) => (
               <Badge
                 key={index}

@@ -115,7 +115,6 @@ body {
 
 .chat-question-marquee-track {
   animation: chat-question-marquee 45s linear infinite;
-  will-change: transform;
 }
 
 .chat-question-marquee:hover .chat-question-marquee-track,
@@ -218,16 +217,13 @@ body {
 
 .ambient-orb {
   position: absolute;
-  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
 }
 
 .ambient-orb > div {
   height: 100%;
   width: 100%;
   border-radius: 9999px;
-  filter: blur(64px);
-  will-change: transform, opacity;
+  filter: blur(48px);
 }
 
 .ambient-orb-one {
@@ -280,7 +276,7 @@ body {
 }
 
 .motion-reveal {
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
 }
 
 .tilt-card {
