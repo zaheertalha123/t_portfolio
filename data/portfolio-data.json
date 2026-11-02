@@ -70,6 +70,20 @@
   ],
   "experience": [
     {
+      "title": "Cyber Security Instructor and Consultant",
+      "company": "Spacebar Training International",
+      "companyUrl": "https://spacebartraining.com/",
+      "period": "Jun 2026 – Present",
+      "status": "current",
+      "location": "London, UK (Remote)",
+      "description": "Delivers practical cybersecurity instruction through recorded video sessions and one-to-one student mentoring, with a focus on applied skills rather than theory-only teaching.",
+      "achievements": [
+        "Delivered practical cybersecurity sessions through video lectures and one-to-one student interactions",
+        "Prepared hands-on labs so students can build applied cybersecurity knowledge through guided practice",
+        "Mentored learners individually to work through labs, concepts, and real-world security scenarios"
+      ]
+    },
+    {
       "title": "Developer (Contract)",
       "company": "EPGGB Law",
       "companyUrl": "https://www.epggblaw.com/",
